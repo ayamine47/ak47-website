@@ -29,3 +29,9 @@ pnpm-debug.log*
 ## Panda
 styled-system
 styled-system-studio
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
