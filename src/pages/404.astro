@@ -1,0 +1,23 @@
+---
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../compoments/Section.astro';
+---
+
+<BaseLayout pageTitle='404 Not Found'>
+  <Section heading='404 Not Found'>
+    <a
+      href='/'
+      class={css({
+        bg: 'black',
+        color: 'white',
+        alignSelf: 'center',
+        fontSize: '32',
+      })}
+    >
+      <u>戻　る</u>
+    </a>
+  </Section>
+</BaseLayout>

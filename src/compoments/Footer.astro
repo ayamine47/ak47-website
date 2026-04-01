@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+import { grid, flex } from '../../styled-system/patterns';
+
+import ak47_banner from '../assets/banner/ak47_banner.png';
+import mizuame_banner from '../assets/banner/mizuame_banner.png';
+import ron736382_banner from '../assets/banner/ron736382_banner.gif';
+---
+
+<hr>
+<footer class={css({p: '4', fontSize: '16'})}>
+  <div class={flex({
+    align: 'center',
+    justify: 'space-between'
+  })}>
+    <p>&copy;2026 AK47 All Rights Reserved.</p>
+    <div class={grid({columns: 4, gap: '4', alignItems: 'center'})}>
+      <p class={css({textAlign: 'center'})}>相互リンク募集中 →</p>
+      <a href="https://www.ak47.work">
+        <Image src={ak47_banner} alt="AK47 の個人サイト" width={200} />
+      </a>
+      <a href="https://ron736382.com">
+        <Image src={ron736382_banner} alt="RONの創作物/編集物保管庫" width={200} />
+      </a>
+      <a href="https://mizuame.works">
+        <Image src={mizuame_banner} alt="みずあめのポートフォリオ" width={200} />
+      </a>
+    </div>
+    <p>Source Code available on <a href="https://github.com/ayamine47/ak47-website"><u>GitHub</u></a>.</p>
+  </div>
+</footer>

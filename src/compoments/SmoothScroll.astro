@@ -1,0 +1,19 @@
+---
+---
+<script>
+	import Lenis from "lenis"
+
+	const lenis = new Lenis({
+        syncTouch: false,
+        touchMultiplier: 0,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+</script>
+
+<slot />

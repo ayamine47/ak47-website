@@ -1,0 +1,28 @@
+---
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Content from '../compoments/Content.astro';
+import Section from '../compoments/Section.astro';
+---
+
+<BaseLayout pageTitle="Contact">
+  <Section heading='Contact'>
+    <Content text='連絡先一覧'>
+        <p>※ 連絡した時に対応が速い順</p>
+        <div class={css({pl: '8'})}>
+          <li>Discord: ak47_work</li>
+          <li>Twitter: <a href="https://twitter.com/ak47_work"><u>ak47_work</u></li></a>
+          <li>Email&ensp; : me☆ak47.work (☆を @ に変えてください)</li>
+        </div>
+      </Content>
+
+      <Content text='ソーシャルゲームアカウント一覧'>
+        <div class={css({pl: '8'})}>
+          <li>『学園アイドルマスター』XCPFCC4Z</li>
+          <li>『ステーションメモリーズ！』GGFEUJ0091</li>
+        </div>
+      </Content>
+  </Section>
+</BaseLayout>

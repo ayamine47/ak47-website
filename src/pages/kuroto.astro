@@ -1,0 +1,100 @@
+---
+import { Image } from 'astro:assets';
+
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Content from '../compoments/Content.astro';
+import Section from '../compoments/Section.astro';
+import WorksCard from '../compoments/WorksCard.astro';
+
+import star from '../assets/katsuki/star.jpg';
+---
+
+<BaseLayout pageTitle='彩峰黎斗'>
+  <Section heading='Engineering'>
+      <p class={css({
+        fontSize: '64',
+        alignSelf: 'center',
+      })}>
+        彩峰黎斗
+      </p>
+      <p class={css({
+        fontSize: '32',
+        alignSelf: 'center',
+      })}>
+        <b>K</b>uroto <b>A</b>yamine
+      </p>
+
+      <Content text='作業環境'>
+        <div class={css({pl: '8'})}>
+          <li>OS: NixOS</li>
+          <li>Kernel: linux-zen</li>
+          <li>DE: hyprland</li>
+        </div>
+      </Content>
+
+      <Content text='好きな言語'>
+        <div class={css({pl: '8'})}>
+          <li>Dart</li>
+          <li>Go</li>
+          <li>Rust</li>
+        </div>
+      </Content>
+
+      <Content text='触ったことのある言語'>
+        <div class={css({pl: '8'})}>
+          <li>C++</li>
+          <li>Lua</li>
+          <li>Nix</li>
+          <li>Python</li>
+          <li>Shell Script</li>
+          <li>TypeScript</li>
+        </div>
+      </Content>
+
+      <Content text='制作物一覧'>
+        <WorksCard
+          title='mahiru'
+          href='https://github.com/ayamine47/mahiru'
+          image={star}
+          alt_text='mahiru'
+          date='26.03'
+          tag='AndroidApp'
+          description='NDI で LAN 内へ映像を伝送する Android アプリ\nWritten in Dart'
+        />
+        <WorksCard
+          title='Bocchi-Go (Archive)'
+          href='https://github.com/tpc3/Bocchi-Go'
+          image={star}
+          alt_text='Bocchi-Go (Archive)'
+          date='23.03'
+          tag='DiscordBot'
+          description='ChatGPT を Discord 上から使用する DiscordBot\nWritten in Go'
+        />
+        <WorksCard
+          title='DuckPolice'
+          href='https://github.com/tpc3/DuckPolice'
+          image={star}
+          alt_text='DuckPolice'
+          date='23.03'
+          tag='DiscordBot'
+          description='重複した URL が投稿された場合、警告を表示する DiscordBot\nWritten in Go'
+        />
+      </Content>
+
+    <Content text='Contribution 一覧'>
+      <WorksCard
+          title='Bocchi-Re'
+          href='https://github.com/tpc3/Bocchi-Re'
+          image={star}
+          alt_text='Bocchi-Re'
+          date='23.12'
+          tag='DiscordBot'
+          description='ChatGPT を Discord 上から使用する DiscordBot\nWritten in Go, Refactor of Bocchi-Go'
+        />
+      </Content>
+  </Section>
+</BaseLayout>

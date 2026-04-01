@@ -1,0 +1,20 @@
+---
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+
+import ContentHeading from './ContentHeading.astro';
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<div class={css({
+  width: 'full',
+  my: '4',
+})}>
+  <ContentHeading text={text} />
+  <slot />
+</div>

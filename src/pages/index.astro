@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+import { flex, vstack } from '../../styled-system/patterns';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../compoments/Section.astro';
+
+import ak47_icon from '../assets/ak47_icon.png';
+---
+
+<BaseLayout pageTitle="Top">
+  <div class={flex({
+    align: 'center',
+    justify: 'space-between',
+    mx: '20%',
+    my: '10%'
+  })}>
+    <Image
+        src={ak47_icon}
+        alt="AK47's icon"
+        class={css({ alignSelf: 'center' })}
+      />
+    <div class={vstack({ textAlign: 'center' })}>
+      <p class={css({ fontSize: '64' })}>
+        AK47
+      </p>
+      <p class={css({ fontSize: '32' })}>
+        Le Penseur<br>Contents Developer
+      </p>
+      <a href='/profile'>
+        <u>MORE</u>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

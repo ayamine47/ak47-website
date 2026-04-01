@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Content from '../compoments/Content.astro';
+import Section from '../compoments/Section.astro';
+import WorksCard from '../compoments/WorksCard.astro';
+
+import chocolate from '../assets/katsuki/chocolate.jpg';
+import oni from '../assets/katsuki/oni.jpg';
+import semantics from '../assets/katsuki/semantics.png';
+import shitaume from '../assets/katsuki/shitaiume.jpg';
+import star from '../assets/katsuki/star.jpg';
+---
+
+<BaseLayout pageTitle='紅坂篤樹'>
+  <Section heading='Literature'>
+      <p class={css({
+        fontSize: '64',
+        alignSelf: 'center',
+      })}>
+        紅坂篤樹
+      </p>
+      <p class={css({
+        fontSize: '32',
+        alignSelf: 'center',
+      })}>
+        <b>A</b>tsuki <b>K</b>osaka
+      </p>
+
+      <Content text='執筆するもの'>
+        <div class={css({pl: '8'})}>
+          <li>説明的文章</li>
+          <div class={css({pl: '8'})}>
+            <li>現代視覚文化論</li>
+          </div>
+          <li>物語的文章</li>
+          <div class={css({pl: '8'})}>
+            <li>一次創作</li>
+            <div class={css({pl: '8'})}>
+              <li>戯曲</li>
+              <li>純文学小説</li>
+              <li>マーダーミステリー</li>
+            </div>
+            <li>二次創作 (小説)</li>
+            <div class={css({pl: '8'})}>
+              <li>学園アイドルマスター</li>
+              <li>ダンガンロンパ</li>
+            </div>
+          </div>
+        </div>
+      </Content>
+
+      <Content text='執筆物一覧'>
+        <WorksCard
+          title='美少女ゲーム意味論'
+          href='https://kuvnlovers.hatenablog.com/entry/bishojo-game-semantics'
+          image={semantics}
+          alt_text='美少女ゲーム意味論'
+          date='26.03.30'
+          tag='現代視覚文化論'
+          description='美少女ゲームという語の意味について検討する。'
+        />
+        <WorksCard
+          title='死体を埋める雨夜さん'
+          href='https://www.pixiv.net/novel/show.php?id=27475886'
+          image={shitaume}
+          alt_text='死体を埋める雨夜さん'
+          date='26.03.08'
+          tag='学園アイドルマスター'
+          description='人を殺してしまった、雨夜燕のプロデューサー。\nその事実を耳にした雨夜燕は――'
+        />
+        <WorksCard
+          title='そんなにチョコレートが欲しいなら、くれてやっても良い'
+          href='https://www.pixiv.net/novel/show.php?id=27282800'
+          image={chocolate}
+          alt_text='そんなにチョコレートが欲しいなら、くれてやっても良い'
+          date='26.02.14'
+          tag='学園アイドルマスター'
+          description='プロデューサーにバレンタインの贈り物をしようとした雨夜燕。\nしかし、いつもの教室で彼女が目にしたものは――'
+        />
+        <WorksCard
+          title='「鬼の面が取れん！」'
+          href='https://www.pixiv.net/novel/show.php?id=27180373'
+          image={oni}
+          alt_text='「鬼の面が取れん！」'
+          date='26.02.02'
+          tag='学園アイドルマスター'
+          description='節分で、鬼に扮装した雨夜燕。\nしかし、お面が取れなくなってしまい――'
+        />
+        <WorksCard
+          title='「雨夜さん、星を観に行きましょう」'
+          href='https://www.pixiv.net/novel/show.php?id=27043993'
+          image={star}
+          alt_text='「雨夜さん、星を観に行きましょう」'
+          date='26.01.19'
+          tag='学園アイドルマスター'
+          description='八ヶ岳へ旅行をする雨夜燕。\n彼女がそこで星南に告白する、ある重大な事実は――'
+        />
+      </Content>
+  </Section>
+</BaseLayout>

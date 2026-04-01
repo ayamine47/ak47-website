@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Content from '../compoments/Content.astro';
+import Section from '../compoments/Section.astro';
+import WorksCard from '../compoments/WorksCard.astro';
+---
+
+<BaseLayout pageTitle='彩峰冬総'>
+  <Section heading='Music'>
+      <p class={css({
+        fontSize: '64',
+        alignSelf: 'center',
+      })}>
+        彩峰冬総
+      </p>
+      <p class={css({
+        fontSize: '32',
+        alignSelf: 'center',
+      })}>
+        <b>K</b>azusa <b>A</b>yamine
+      </p>
+
+      <Content text='作業環境'>
+        <div class={css({pl: '8'})}>
+          <li>DAW : Studio One 7 Pro</li>
+          <li>シンセサイザー : KORG X50</li>
+          <li>オーディオインタフェース : Presonus AudioBox iTwo</li>
+        </div>
+      </Content>
+
+      <Content text='楽曲一覧'>
+        <p>工事中……</p>
+      </Content>
+  </Section>
+</BaseLayout>

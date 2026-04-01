@@ -1,0 +1,13 @@
+---
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+---
+
+<div class={css({
+  textAlign: 'center',
+  fontSize: '128',
+  marginBottom: '16'
+})}>
+  <slot />
+  <hr>
+</div>

@@ -1,0 +1,96 @@
+---
+import { Image } from 'astro:assets';
+
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+
+import twitter from '../assets/twitter.svg';
+import pixiv from '../assets/pixiv.png';
+import github from '../assets/github.png';
+---
+
+<div class={css({display: 'block'})}>
+  <header class={css({
+    bg: '#8560fe',
+    position: 'fixed',
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: 'full',
+    zIndex: 9999,
+    py: '2px',
+    m: '0',
+    borderBottom: '3',
+    borderBottomColor: 'white',
+    borderBottomStyle: 'solid',
+  })}>
+    <div class={css({
+      display: 'flex',
+      alignItems: 'center',
+      fontSize: '16',
+      gap: '4'
+    })}>
+      <a href="/" class={css({
+        fontSize: '32',
+        ml: '4'
+      })}>
+        AK47
+      </a>
+      <a href="/profile">
+        Profile
+      </a>
+      <a href="/katsuki">
+        Literature
+      </a>
+      <a href="/kazusa">
+        Music
+      </a>
+      <a href="/kuroto">
+        Engineering
+      </a>
+      <a href="/blog">
+        Blog
+      </a>
+      <a href="/contact">
+        Contact
+      </a>
+      <a href="/banner">
+        Banner
+      </a>
+    </div>
+
+    <div class={css({
+      display: 'flex',
+      px: '4',
+      alignItems: 'center',
+      gap: '4'
+    })}>
+      <a href="https://twitter.com/ak47_work">
+        <Image src={twitter} alt="Twitter" class={css({
+          w: '4',
+          h: '4',
+          _hover: {
+            opacity: '60'
+          }
+        })} />
+      </a>
+      <a href="https://www.pixiv.net/users/105353694">
+        <Image src={pixiv} alt="Pixiv" class={css({
+          w: '4',
+          h: '4',
+          _hover: {
+            opacity: '60'
+          }
+        })} />
+      </a>
+      <a href="https://github.com/ayamine47">
+        <Image src={github} alt="Twitter" class={css({
+          w: '4',
+          h: '4',
+          _hover: {
+            opacity: '60'
+          }
+        })} />
+      </a>
+    </div>
+  </header>
+</div>

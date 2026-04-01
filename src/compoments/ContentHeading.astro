@@ -1,0 +1,13 @@
+---
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<p class={css({fontSize: '32'})}>{text}</p>
+<hr class={css({width: 'full'})}>

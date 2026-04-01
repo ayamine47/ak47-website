@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+import { flex, vstack } from '../../styled-system/patterns';
+
+import Heading from './Heading.astro';
+
+interface Props {
+  heading: string;
+}
+
+const { heading } = Astro.props;
+---
+
+<div class={flex({
+    width: 'full',
+    direction: 'column',
+    align: 'center',
+    paddingBottom: '24',
+})}>
+  <Heading>
+    {heading}
+  </Heading>
+  <div class={vstack({
+    width: 'full',
+  })}>
+    <div class={vstack({
+      width: '50%',
+      alignItems: 'start',
+      
+    })}>
+      <slot />
+    </div>
+  </div>
+</div>
