@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@pandacss/dev": "^1.9.1",
-    "lenis": "^1.3.21"
+    "lenis": "^1.3.21",
+    "sharp": "^0.34.5"
   }
 }
