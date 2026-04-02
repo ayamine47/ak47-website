@@ -30,14 +30,14 @@ const { hrefs } = Astro.props;
     borderBottom: '3',
     borderBottomColor: 'white',
     borderBottomStyle: 'solid',
-}), "group"]}>
+}), 'group']}>
   <div class={css({
     display: 'flex',
     alignItems: 'center',
     fontSize: '16',
     gap: '4'
   })}>
-    <a href="/" class={css({
+    <a href='/' class={css({
       fontSize: '32',
       ml: '4'
     })}>
@@ -69,31 +69,31 @@ const { hrefs } = Astro.props;
       height: 'full',
       backdropFilter: 'auto',
       backdropBlur: '8px',
-      opacity: '0',
+      visibility: 'hidden',
       _groupExpanded: {
-        opacity: '1'
+        visibility: 'visible'
       }
   })}>
     {
       hrefs.map(({ name, target }) => (
         <a
           href={target}
-          class={css({
+          class:list={[css({
             fontSize: '24',
-          })}
+          }), 'nav_item']}
         >
           {name}
         </a>
       ))
     }
-  <div class={css({
+  <div class:list={[css({
     display: 'flex',
     px: '4',
     alignItems: 'center',
     gap: '8'
-  })}>
-    <a href="https://twitter.com/ak47_work">
-      <Image src={twitter} alt="Twitter" class={css({
+  }), 'nav_item']}>
+    <a href='https://twitter.com/ak47_work'>
+      <Image src={twitter} alt='Twitter' class={css({
         w: '8',
         h: '8',
         _hover: {
@@ -101,8 +101,8 @@ const { hrefs } = Astro.props;
         }
       })} />
     </a>
-    <a href="https://www.pixiv.net/users/105353694">
-      <Image src={pixiv} alt="Pixiv" class={css({
+    <a href='https://www.pixiv.net/users/105353694'>
+      <Image src={pixiv} alt='Pixiv' class={css({
         w: '8',
         h: '8',
         _hover: {
@@ -110,8 +110,8 @@ const { hrefs } = Astro.props;
         }
       })} />
     </a>
-    <a href="https://github.com/ayamine47">
-      <Image src={github} alt="Twitter" class={css({
+    <a href='https://github.com/ayamine47'>
+      <Image src={github} alt='GitHub' class={css({
         w: '8',
         h: '8',
         _hover: {
@@ -128,11 +128,15 @@ const { hrefs } = Astro.props;
 </header>
 
 <script>
-  const header = document.getElementById("header") as HTMLElement;
-  const button = document.getElementById("menu_button") as HTMLButtonElement;
-  const menu = document.getElementById("header_nav") as HTMLElement;
+  const header = document.getElementById('header') as HTMLElement;
+  const button = document.getElementById('menu_button') as HTMLButtonElement;
+  const menu = document.getElementById('header_nav') as HTMLElement;
 
   let isMenuOpen = false;
+
+  const noscroll = (e: Event) => {
+    e.preventDefault();
+  };
 
   function toggleMenuState() {
     isMenuOpen = !isMenuOpen;
@@ -142,6 +146,14 @@ const { hrefs } = Astro.props;
       isMenuOpen ? 'Close Menu' : 'Open Menu',
     );
     menu.setAttribute('aria-hidden', (!isMenuOpen).toString());
+
+    if (isMenuOpen) {
+      document.addEventListener('touchmove', noscroll, { passive: false });
+      document.addEventListener('wheel', noscroll, { passive: false });
+    } else {
+      document.removeEventListener('touchmove', noscroll);
+      document.removeEventListener('wheel', noscroll);
+    }
   }
 
   button.addEventListener('click', toggleMenuState);
