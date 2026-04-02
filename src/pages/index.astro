@@ -6,13 +6,13 @@ import { css } from '../../styled-system/css';
 import { flex, vstack } from '../../styled-system/patterns';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Section from '../compoments/Section.astro';
 
 import ak47_icon from '../assets/ak47_icon.png';
 ---
 
 <BaseLayout pageTitle="Top">
   <div class={flex({
+    direction: { base: 'column', lg: 'row' },
     align: 'center',
     justify: 'space-between',
     mx: '20%',

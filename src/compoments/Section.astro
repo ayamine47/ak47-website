@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import { css } from '../../styled-system/css';
 import { flex, vstack } from '../../styled-system/patterns';
 
 import Heading from './Heading.astro';
@@ -25,9 +24,8 @@ const { heading } = Astro.props;
     width: 'full',
   })}>
     <div class={vstack({
-      width: '50%',
-      alignItems: 'start',
-      
+      width: { base: 'full', lg: '50%' },
+      alignItems: { base: 'start' },
     })}>
       <slot />
     </div>

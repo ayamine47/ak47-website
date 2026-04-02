@@ -13,11 +13,13 @@ import ron736382_banner from '../assets/banner/ron736382_banner.gif';
 <hr>
 <footer class={css({p: '4', fontSize: '16'})}>
   <div class={flex({
+    direction: { base: 'column', lg: 'row' },
     align: 'center',
-    justify: 'space-between'
+    justify: 'space-between',
+    gap: '4'
   })}>
     <p>&copy;2026 AK47 All Rights Reserved.</p>
-    <div class={grid({columns: 4, gap: '4', alignItems: 'center'})}>
+    <div class={grid({ columns: { base: 2, lg: 4 }, gap: '4', alignItems: 'center' })}>
       <p class={css({textAlign: 'center'})}>相互リンク募集中 →</p>
       <a href="https://www.ak47.work">
         <Image src={ak47_banner} alt="AK47 の個人サイト" width={200} />

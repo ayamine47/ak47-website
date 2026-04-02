@@ -1,0 +1,23 @@
+---
+import { css } from '../../styled-system/css';
+import Header from './Header.astro';
+import MobileHeader from './MobileHeader.astro';
+
+const hrefs = [
+  { name: 'Profile', target: '/profile' },
+  { name: 'Literature', target: '/katsuki' },
+  { name: 'Music', target: '/kazusa' },
+  { name: 'Engineering', target: '/kuroto' },
+  { name: 'Blog', target: '/blog' },
+  { name: 'Contact', target: '/contact' },
+  { name: 'Banner', target: '/banner' },
+];
+---
+
+<div class={css({ display: { base: 'block', lg: 'none' } })}>
+    <MobileHeader hrefs={hrefs} />
+</div>
+
+<div class={css({ display: { base: 'none', lg: 'block' } })}>
+    <Header hrefs={hrefs} />
+</div>

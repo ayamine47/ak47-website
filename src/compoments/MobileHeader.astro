@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+import { center } from '../../styled-system/patterns';
+
+import twitter from '../assets/twitter.svg';
+import pixiv from '../assets/pixiv.png';
+import github from '../assets/github.png';
+
+interface Props {
+    hrefs: { name: string; target: string }[];
+}
+const { hrefs } = Astro.props;
+---
+
+<header
+  id='header'
+  aria-expanded='false'
+  class:list={[css({
+    bg: '#8560fe',
+    position: 'fixed',
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: 'full',
+    zIndex: 9999,
+    py: '2',
+    m: '0',
+    borderBottom: '3',
+    borderBottomColor: 'white',
+    borderBottomStyle: 'solid',
+}), "group"]}>
+  <div class={css({
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '16',
+    gap: '4'
+  })}>
+    <a href="/" class={css({
+      fontSize: '32',
+      ml: '4'
+    })}>
+      AK47
+    </a>
+  </div>
+
+  <button
+    type='button'
+    aria-controls='header_nav'
+    aria-label='Open Menu'
+    id='menu_button'
+    class={css({ mr: '4' })}
+  >
+  Menu
+  </button>
+
+  <nav
+    aria-hidden='true'
+    id='header_nav'
+    class={center({
+      bg: '#8560feb4',
+      flexDirection: 'column',
+      pos: 'fixed',
+      top: '16',
+      left: '0',
+      gap: '8',
+      width: 'full',
+      height: 'full',
+      backdropFilter: 'auto',
+      backdropBlur: '8px',
+      opacity: '0',
+      _groupExpanded: {
+        opacity: '1'
+      }
+  })}>
+    {
+      hrefs.map(({ name, target }) => (
+        <a
+          href={target}
+          class={css({
+            fontSize: '24',
+          })}
+        >
+          {name}
+        </a>
+      ))
+    }
+  <div class={css({
+    display: 'flex',
+    px: '4',
+    alignItems: 'center',
+    gap: '8'
+  })}>
+    <a href="https://twitter.com/ak47_work">
+      <Image src={twitter} alt="Twitter" class={css({
+        w: '8',
+        h: '8',
+        _hover: {
+          opacity: '60'
+        }
+      })} />
+    </a>
+    <a href="https://www.pixiv.net/users/105353694">
+      <Image src={pixiv} alt="Pixiv" class={css({
+        w: '8',
+        h: '8',
+        _hover: {
+          opacity: '60'
+        }
+      })} />
+    </a>
+    <a href="https://github.com/ayamine47">
+      <Image src={github} alt="Twitter" class={css({
+        w: '8',
+        h: '8',
+        _hover: {
+          opacity: '60'
+        }
+      })} />
+    </a>
+    </div>
+  </nav>
+
+<!--
+  
+-->
+</header>
+
+<script>
+  const header = document.getElementById("header") as HTMLElement;
+  const button = document.getElementById("menu_button") as HTMLButtonElement;
+  const menu = document.getElementById("header_nav") as HTMLElement;
+
+  let isMenuOpen = false;
+
+  function toggleMenuState() {
+    isMenuOpen = !isMenuOpen;
+
+    header.setAttribute('aria-expanded', isMenuOpen.toString());
+    button.setAttribute('aria-label', 
+      isMenuOpen ? 'Close Menu' : 'Open Menu',
+    );
+    menu.setAttribute('aria-hidden', (!isMenuOpen).toString());
+  }
+
+  button.addEventListener('click', toggleMenuState);
+</script>
