@@ -11,14 +11,14 @@ interface Props {
   image: ImageMetadata;
   alt_text: string;
   date: string;
-  tag: string;
+  tags: string[];
   description: string;
 }
 
-const { title, href, image, alt_text, date, tag, description } = Astro.props;
+const { title, href, image, alt_text, date, tags, description } = Astro.props;
 ---
 
-<div class={css({m: '4'})}>
+<div class={css({ m: '4' })}>
   <a href={href}>
     <div class={flex({
       width: '100%',
@@ -42,22 +42,28 @@ const { title, href, image, alt_text, date, tag, description } = Astro.props;
         justify: 'center',
         rowGap: '1'
       })}>
-        <p class={css({fontSize: { base: '10', md: '16' } })}>{date}</p>
-        <p class={css({fontSize: { base: '14', md: '16' } })}>{title}</p>
+        <p class={css({fontSize: { base: '10', md: '12' } })}>{date}</p>
+        <p class={css({fontSize: { base: '16', md: '20' } })}>{title}</p>
         <p class={css({
-          fontSize: {base: '9', md: '16' },
+          fontSize: {base: '9', md: '14' },
           whiteSpace: 'pre-line'
         })}>
           {description}
         </p>
-        <p class={css({
-          p: '1',
-          border: '1',
-          borderStyle: 'solid',
-          fontSize: {base: '8', md: '12' },
-        })}>
-          #{tag}
-        </p>
+        <div class={flex({ direction: 'row', gap: '2', my: '2' })}>
+          {
+            tags.map((tag) => (
+              <button class={css({
+                p: '1',
+                border: '1',
+                borderStyle: 'solid',
+                fontSize: {base: '8', md: '14' },
+              })}>
+                #{tag}
+              </button>
+            ))
+          }
+        </div>
       </div>
     </div>
   </a>

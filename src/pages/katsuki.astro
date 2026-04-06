@@ -11,10 +11,105 @@ import Section from '../compoments/Section.astro';
 import WorksCard from '../compoments/WorksCard.astro';
 
 import chocolate from '../assets/katsuki/chocolate.jpg';
+import hermeneutics from '../assets/katsuki/hermeneutics.png';
 import oni from '../assets/katsuki/oni.jpg';
 import semantics from '../assets/katsuki/semantics.png';
 import shitaume from '../assets/katsuki/shitaiume.jpg';
 import star from '../assets/katsuki/star.jpg';
+
+interface WorkMetaData {
+  title: string;
+  href: string;
+  image: ImageMetadata;
+  date: string;
+  tags: string[];
+  description: string;
+}
+
+const works: WorkMetaData[] = [
+  // template
+  /*
+  {
+    title: '',
+    href: '',
+    image: ,
+    date: '',
+    tags: [
+      ''
+    ],
+    description: ''
+  },
+  */
+  {
+    title: '美少女ゲーム解釈学入門',
+    href: 'https://kuvnlovers.hatenablog.com/entry/bishojo-game-semantics',
+    image: hermeneutics,
+    date: '26.04.04',
+    tags: [
+      '説明的文章',
+      '現代視覚文化論',
+      '京大美少女ゲーム同好会'
+    ],
+    description: '美少女ゲームを " 解釈 " する行為について解説する。'
+  },
+  {
+    title: '美少女ゲーム意味論',
+    href: 'https://kuvnlovers.hatenablog.com/entry/bishojo-game-semantics',
+    image: semantics,
+    date: '26.03.30',
+    tags: [
+      '説明的文章',
+      '現代視覚文化論',
+      '京大美少女ゲーム同好会'
+    ],
+    description: '美少女ゲームという語の意味について検討する。'
+  },
+  {
+    title: '死体を埋める雨夜さん',
+    href: 'https://www.pixiv.net/novel/show.php?id=27475886',
+    image: shitaume,
+    date: '26.03.08',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター'
+    ],
+    description: '人を殺してしまった、雨夜燕のプロデューサー。\nその事実を耳にした雨夜燕は――'
+  },
+  {
+    title: 'そんなにチョコレートが欲しいなら、くれてやっても良い',
+    href: 'https://www.pixiv.net/novel/show.php?id=27282800',
+    image: chocolate,
+    date: '26.02.14',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター'
+    ],
+    description: 'プロデューサーにバレンタインの贈り物をしようとした雨夜燕。\nしかし、いつもの教室で彼女が目にしたものは――'
+  },
+  {
+    title: '「鬼の面が取れん！」',
+    href: 'https://www.pixiv.net/novel/show.php?id=27180373',
+    image: oni,
+    date: '26.02.02',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター'
+    ],
+    description: '節分で、鬼に扮装した雨夜燕。\nしかし、お面が取れなくなってしまい――'
+  },
+  {
+    title: '「雨夜さん、星を観に行きましょう」',
+    href: 'https://www.pixiv.net/novel/show.php?id=27043993',
+    image: star,
+    date: '26.01.19',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター'
+    ],
+    description: '八ヶ岳へ旅行をする雨夜燕。\n彼女がそこで星南に告白する、ある重大な事実は――'
+  }
+];
+
 ---
 
 <BaseLayout pageTitle='紅坂篤樹'>
@@ -58,51 +153,19 @@ import star from '../assets/katsuki/star.jpg';
       </Content>
 
       <Content text='執筆物一覧'>
-        <WorksCard
-          title='美少女ゲーム意味論'
-          href='https://kuvnlovers.hatenablog.com/entry/bishojo-game-semantics'
-          image={semantics}
-          alt_text='美少女ゲーム意味論'
-          date='26.03.30'
-          tag='現代視覚文化論'
-          description='美少女ゲームという語の意味について検討する。'
-        />
-        <WorksCard
-          title='死体を埋める雨夜さん'
-          href='https://www.pixiv.net/novel/show.php?id=27475886'
-          image={shitaume}
-          alt_text='死体を埋める雨夜さん'
-          date='26.03.08'
-          tag='学園アイドルマスター'
-          description='人を殺してしまった、雨夜燕のプロデューサー。\nその事実を耳にした雨夜燕は――'
-        />
-        <WorksCard
-          title='そんなにチョコレートが欲しいなら、くれてやっても良い'
-          href='https://www.pixiv.net/novel/show.php?id=27282800'
-          image={chocolate}
-          alt_text='そんなにチョコレートが欲しいなら、くれてやっても良い'
-          date='26.02.14'
-          tag='学園アイドルマスター'
-          description='プロデューサーにバレンタインの贈り物をしようとした雨夜燕。\nしかし、いつもの教室で彼女が目にしたものは――'
-        />
-        <WorksCard
-          title='「鬼の面が取れん！」'
-          href='https://www.pixiv.net/novel/show.php?id=27180373'
-          image={oni}
-          alt_text='「鬼の面が取れん！」'
-          date='26.02.02'
-          tag='学園アイドルマスター'
-          description='節分で、鬼に扮装した雨夜燕。\nしかし、お面が取れなくなってしまい――'
-        />
-        <WorksCard
-          title='「雨夜さん、星を観に行きましょう」'
-          href='https://www.pixiv.net/novel/show.php?id=27043993'
-          image={star}
-          alt_text='「雨夜さん、星を観に行きましょう」'
-          date='26.01.19'
-          tag='学園アイドルマスター'
-          description='八ヶ岳へ旅行をする雨夜燕。\n彼女がそこで星南に告白する、ある重大な事実は――'
-        />
+        {
+          works.map((work) => (
+            <WorksCard
+              title={work.title}
+              href={work.href}
+              image={work.image}
+              alt_text={work.title}
+              date={work.date}
+              tags={work.tags}
+              description={work.description}
+            />
+          ))
+        }
       </Content>
   </Section>
 </BaseLayout>

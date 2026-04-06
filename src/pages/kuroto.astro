@@ -11,6 +11,80 @@ import Section from '../compoments/Section.astro';
 import WorksCard from '../compoments/WorksCard.astro';
 
 import github from '../assets/github.png';
+
+interface WorkMetaData {
+  title: string;
+  href: string;
+  image: ImageMetadata;
+  date: string;
+  tags: string[];
+  description: string;
+}
+
+const works: WorkMetaData[] = [
+  // template
+  /*
+  {
+    title: '',
+    href: '',
+    image: ,
+    date: '',
+    tags: [
+      ''
+    ],
+    description: ''
+  },
+  */
+  {
+    title: 'mahiru',
+    href: 'https://github.com/ayamine47/mahiru',
+    image: github,
+    date: '26.03',
+    tags: [
+      'AndroidApp',
+      'Dart',
+      'Flutter'
+    ],
+    description: 'NDI で LAN 内へ映像を伝送する Android アプリ\nWritten in Dart'
+  },
+  {
+    title: 'Bocchi-Go (Archive)',
+    href: 'https://github.com/tpc3/Bocchi-Go',
+    image: github,
+    date: '23.03',
+    tags: [
+      'DiscordBot',
+      'Go',
+    ],
+    description: 'ChatGPT を Discord 上から使用する DiscordBot\nWritten in Go'
+  },
+  {
+    title: 'DuckPolice',
+    href: 'https://github.com/tpc3/DuckPolice',
+    image: github,
+    date: '23.03',
+    tags: [
+      'DiscordBot',
+      'Go'
+    ],
+    description: '重複した URL が投稿された場合、警告を表示する DiscordBot\nWritten in Go'
+  },
+];
+
+const contributions: WorkMetaData[] = [
+  {
+    title: 'Bocchi-Re',
+    href: 'https://github.com/tpc3/Bocchi-Re',
+    image: github,
+    date: '23.12',
+    tags: [
+      'DiscordBot',
+      'Go',
+    ],
+    description: 'ChatGPT を Discord 上から使用する DiscordBot\nWritten in Go, Refactor of Bocchi-Go'
+  }
+];
+
 ---
 
 <BaseLayout pageTitle='彩峰黎斗'>
@@ -62,45 +136,35 @@ import github from '../assets/github.png';
       </Content>
 
       <Content text='制作物一覧'>
-        <WorksCard
-          title='mahiru'
-          href='https://github.com/ayamine47/mahiru'
-          image={github}
-          alt_text='mahiru'
-          date='26.03'
-          tag='AndroidApp'
-          description='NDI で LAN 内へ映像を伝送する Android アプリ\nWritten in Dart'
-        />
-        <WorksCard
-          title='Bocchi-Go (Archive)'
-          href='https://github.com/tpc3/Bocchi-Go'
-          image={github}
-          alt_text='Bocchi-Go (Archive)'
-          date='23.03'
-          tag='DiscordBot'
-          description='ChatGPT を Discord 上から使用する DiscordBot\nWritten in Go'
-        />
-        <WorksCard
-          title='DuckPolice'
-          href='https://github.com/tpc3/DuckPolice'
-          image={github}
-          alt_text='DuckPolice'
-          date='23.03'
-          tag='DiscordBot'
-          description='重複した URL が投稿された場合、警告を表示する DiscordBot\nWritten in Go'
-        />
+        {
+          works.map((work) => (
+            <WorksCard
+              title={work.title}
+              href={work.href}
+              image={work.image}
+              alt_text={work.title}
+              date={work.date}
+              tags={work.tags}
+              description={work.description}
+            />
+          ))
+        }
       </Content>
 
     <Content text='Contribution 一覧'>
-      <WorksCard
-          title='Bocchi-Re'
-          href='https://github.com/tpc3/Bocchi-Re'
-          image={github}
-          alt_text='Bocchi-Re'
-          date='23.12'
-          tag='DiscordBot'
-          description='ChatGPT を Discord 上から使用する DiscordBot\nWritten in Go, Refactor of Bocchi-Go'
-        />
+        {
+          contributions.map((work) => (
+            <WorksCard
+              title={work.title}
+              href={work.href}
+              image={work.image}
+              alt_text={work.title}
+              date={work.date}
+              tags={work.tags}
+              description={work.description}
+            />
+          ))
+        }
       </Content>
   </Section>
 </BaseLayout>

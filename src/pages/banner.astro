@@ -7,8 +7,6 @@ import { css } from '../../styled-system/css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Content from '../compoments/Content.astro';
 import Section from '../compoments/Section.astro';
-
-import ak47_banner from '../../public/assets/banner/ak47_banner.png';
 ---
 
 <BaseLayout pageTitle="Banner">
@@ -32,7 +30,7 @@ import ak47_banner from '../../public/assets/banner/ak47_banner.png';
       </div>
     
       <p>画像サイズ : 200 × 40</p>
-      <Image src={ak47_banner} alt='AK47 の個人サイト' />
+      <Image src={'https://www.ak47.work/assets/banner/ak47_banner.png'} width={200} height={40} alt='AK47 の個人サイト' />
     </Content>
   </Section>
 </BaseLayout>

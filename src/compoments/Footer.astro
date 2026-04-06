@@ -5,9 +5,7 @@ import '../styles/global.css';
 import { css } from '../../styled-system/css';
 import { grid, flex } from '../../styled-system/patterns';
 
-import ak47_banner from '../../public/assets/banner/ak47_banner.png';
 import mizuame_banner from '../assets/banner/mizuame_banner.png';
-import ron736382_banner from '../assets/banner/ron736382_banner.gif';
 ---
 
 <hr>
@@ -22,10 +20,10 @@ import ron736382_banner from '../assets/banner/ron736382_banner.gif';
     <div class={grid({ columns: { base: 2, lg: 4 }, gap: '4', alignItems: 'center' })}>
       <p class={css({textAlign: 'center'})}>相互リンク募集中 →</p>
       <a href="https://www.ak47.work">
-        <Image src={ak47_banner} alt="AK47 の個人サイト" width={200} />
+        <Image src={'https://www.ak47.work/assets/banner/ak47_banner.png'} width={200} height={40} alt='AK47 の個人サイト' />
       </a>
       <a href="https://ron736382.com">
-        <Image src={ron736382_banner} alt="RONの創作物/編集物保管庫" width={200} />
+        <Image src={'https://ron736382.com/archive/202603/img/banner.gif'} width={200} height={40} alt="RONの創作物/編集物保管庫"/>
       </a>
       <a href="https://mizuame.works">
         <Image src={mizuame_banner} alt="みずあめのポートフォリオ" width={200} />
