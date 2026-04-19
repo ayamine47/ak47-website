@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-
 import '../styles/global.css';
 import { css } from '../../styled-system/css';
 
@@ -9,6 +7,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Content from '../compoments/Content.astro';
 import Section from '../compoments/Section.astro';
 import WorksCard from '../compoments/WorksCard.astro';
+
+import dummy from '../assets/dummy.png';
+
+interface WorkMetaData {
+  title: string;
+  href: string;
+  image: ImageMetadata;
+  date: string;
+  tags: string[];
+  description: string;
+}
+
+const works: WorkMetaData[] = [
+  // template
+  /*
+  {
+    title: '',
+    href: '',
+    image: ,
+    date: '',
+    tags: [
+      ''
+    ],
+    description: ''
+  },
+  */
+  {
+    title: '月と毒',
+    href: 'https://soundcloud.com/orf6qsrzckuu/qtslgt55udgl',
+    image: dummy,
+    date: '26.04.25',
+    tags: [
+      'ゴシックメタル',
+      '宮舞モカ'
+    ],
+    description: '筑波大学現代視覚文化研究会ボカロ班『Metalloid』収録作品'
+  },
+]
 ---
 
 <BaseLayout pageTitle='彩峰冬総'>
@@ -35,7 +71,19 @@ import WorksCard from '../compoments/WorksCard.astro';
       </Content>
 
       <Content text='楽曲一覧'>
-        <p>工事中……</p>
+        {
+          works.map((work) => (
+            <WorksCard
+              title={work.title}
+              href={work.href}
+              image={work.image}
+              alt_text={work.title}
+              date={work.date}
+              tags={work.tags}
+              description={work.description}
+            />
+          ))
+        }
       </Content>
   </Section>
 </BaseLayout>
