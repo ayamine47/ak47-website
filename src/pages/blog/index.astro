@@ -1,38 +1,66 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
-import '../../styles/global.css';
 import { css } from '../../../styled-system/css';
+import { flex, vstack } from '../../../styled-system/patterns';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Content from '../../compoments/Content.astro';
-import Section from '../../compoments/Section.astro';
-import WorksCard from '../../compoments/WorksCard.astro';
 
-import github from '../../assets/github.png';
+import Section from '../../components/Section.astro';
+import WorksCard from '../../components/WorksCard.astro';
 
-const allPosts = await getCollection("blog");
+import dummy from '../../assets/dummy.png';
 
-allPosts.sort().reverse();
+const pageSize = 5;
+
+const allPosts = (await getCollection('blog')).sort((a, b) => b.data.date.localeCompare(a.data.date));
+const posts = allPosts.slice(0, pageSize);
+const listSlots = Array.from({ length: pageSize }, (_, i) => posts[i] ?? null);
+const totalPages = Math.ceil(allPosts.length / pageSize);
 ---
 
-<BaseLayout pageTitle="Blog Top">
-  <Section heading='Blog'>
-    <Content text='記事一覧'>
-      工事中……
-        <!-- {
-          allPosts.map((post) => (
-            <WorksCard
-              title={post.data.title}
-              href={`/blog/${post.slug}`}
-              image={github}
-              alt_text={post.data.title}
-              date={post.data.date}
-              tags={post.data.tags}
-              description={post.data.description}
-            />
-          ))
-        } -->
-    </Content>
-  </Section>
+<BaseLayout pageTitle='ブログ記事一覧'>
+	<Section heading='Blog'>
+		<div class={vstack({ w: 'full', gap: '4', p: '0' })}>
+			{
+				listSlots.map((post) => (
+					<div class={css({ w: 'full' })}>
+						{
+							post ? (
+								<WorksCard
+									title={post.data.title}
+									href={`/blog/${post.id}`}
+									image={dummy}
+									alt_text='Dummy Image'
+									date={post.data.date}
+									tags={[]}
+									description={
+										post.body!.length > 48
+											? (
+												post.body!.replace(/\r?\n/g, "　").slice(0, 46) + '……'
+											)
+											: (post.body!.replace(/\r?\n/g, "　"))
+									}
+								/>
+							) : (
+								<div aria-hidden='true' class={css({ minH: '80px' })}></div>
+							)
+						}
+					</div>
+				))
+			}
+		</div>
+
+		<nav aria-label='Blog Pagination' class={flex({ gap: '2', alignSelf: 'center', minH: '8' })}>
+			{
+				Array.from({ length: Math.max(totalPages, 1) }, (_, i) => i + 1).map((page) =>
+					page === 1 ? (
+						<span class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', color: 'white' })}>{page}</span>
+					) : (
+						<a href={`/blog/page/${page}`} class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', bg: 'white' })}>{page}</a>
+					)
+				)
+			}
+		</nav>
+	</Section>
 </BaseLayout>

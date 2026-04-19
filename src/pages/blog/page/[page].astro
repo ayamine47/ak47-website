@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+
+import '../../../styles/global.css';
+import { css } from '../../../../styled-system/css';
+import { flex, grid } from '../../../../styled-system/patterns';
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/Section.astro';
+import WorksCard from '../../../components/WorksCard.astro';
+
+const PAGE_SIZE = 5;
+
+export async function getStaticPaths() {
+  const pageSize = 5;
+  const allPosts = (await getCollection('blog')).sort((a, b) => b.data.date.localeCompare(a.data.date));
+  const totalPages = Math.ceil(allPosts.length / pageSize);
+
+  if (totalPages <= 1) {
+    return [];
+  }
+
+  return Array.from({ length: totalPages - 1 }, (_, i) => {
+    const page = i + 2;
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+
+    return {
+      params: { page: String(page) },
+      props: {
+        currentPage: page,
+        totalPages,
+        pageSize,
+        posts: allPosts.slice(start, end),
+      },
+    };
+  });
+}
+
+const { currentPage, posts, totalPages, pageSize = PAGE_SIZE } = Astro.props;
+const listSlots = Array.from({ length: pageSize }, (_, i) => posts[i] ?? null);
+---
+
+<BaseLayout pageTitle={`ブログ記事一覧`}>
+  <Section heading='Blog'>
+    <div>
+      <p class={css({ color: 'gray.500', fontSize: '12' })}>NEWS</p>
+      <h1 class={css({ fontSize: '36' })}><b>ニュース一覧</b></h1>
+    </div>
+
+    <ul class={grid({ w: 'full', gap: '4', listStyle: 'none', p: '0' })}>
+      {
+        listSlots.map((post) => (
+          <li>
+            {
+              post ? (
+                <a href={`/blog/${post.id}`} class={css({ display: 'block', minH: '92px', p: '4', bg: 'white' })}>
+                  <p class={css({ color: 'gray.500', fontSize: '12' })}>{post.data.date}</p>
+                  <p class={css({ fontSize: '18', fontWeight: 'bold' })}>{post.data.title}</p>
+                </a>
+              ) : (
+                <div aria-hidden='true' class={css({ minH: '80px' })}></div>
+              )
+            }
+          </li>
+        ))
+      }
+    </ul>
+
+    <nav aria-label='ニュース一覧ページネーション' class={flex({ gap: '2', alignSelf: 'center', minH: '8' })}>
+      {
+        Array.from({ length: totalPages }, (_, i) => i + 1).map((page) =>
+          page === currentPage ? (
+            <span class={css({ px: '4', py: '2', color: 'white' })}>{page}</span>
+          ) : page === 1 ? (
+            <a href='/blog' class={css({ px: '4', py: '2', bg: 'white' })}>{page}</a>
+          ) : (
+            <a href={`/blog/page/${page}`} class={css({ px: '4', py: '2', bg: 'white' })}>{page}</a>
+          )
+        )
+      }
+    </nav>
+  </Section>
+</BaseLayout>

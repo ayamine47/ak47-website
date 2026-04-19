@@ -18,7 +18,8 @@ export default defineConfig({
     extend: {
       tokens: {
         fonts: {
-          mincho: { value: "'Zen Old Mincho', sans-serif" }
+          mincho: { value: "'Zen Old Mincho', sans-serif" },
+          mplus: { value: "'M PLUS 1', sans" }
         }
       }
     },

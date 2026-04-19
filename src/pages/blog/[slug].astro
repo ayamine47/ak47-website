@@ -1,0 +1,66 @@
+---
+import { getCollection, render } from 'astro:content';
+
+import { css } from '../../../styled-system/css';
+import { flex, vstack } from '../../../styled-system/patterns';
+
+import Heading from '../../components/Heading.astro';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const read_time = Math.ceil(Content.length / 500) + 1;
+---
+
+<BaseLayout pageTitle={post.data.title}>
+  <div class={flex({
+    w: 'full',
+    direction: 'column',
+    align: 'center',
+    paddingBottom: '24',
+  })}>
+    <Heading>Blog</Heading>
+    <div class={css({
+      w: 'full',
+      p: '8',
+      bg: 'gray.800',
+      border: '1',
+      borderColor: 'white',
+      borderStyle: 'solid',
+      fontFamily: 'mplus'
+    })}>
+      <u class={css({ fontSize: 48 })}>{post.data.title}</u>
+      <p class={css({ color: 'gray.400', my: '4', fontSize: '16' })}>{post.data.date}&nbsp;・&nbsp;{read_time} 分で読めます</p>
+      <div class={css({
+        my: '8',
+        fontSize: 16,
+      })}>
+        <Content />
+      </div>
+    </div>
+
+    <a
+      href='/blog'
+      class={css({
+        my: '8',
+        bg: 'black',
+        color: 'white',
+        alignSelf: 'center',
+        fontSize: '32',
+      })}
+    >
+      <u>戻　る</u>
+    </a>
+  </div>
+  </Section>
+</BaseLayout>
