@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 
 import '../styles/global.css';
 import { css } from '../../styled-system/css';
-import { grid, flex } from '../../styled-system/patterns';
+import { grid, flex, vstack } from '../../styled-system/patterns';
 ---
 
 <hr>
@@ -15,23 +15,28 @@ import { grid, flex } from '../../styled-system/patterns';
     gap: '4'
   })}>
     <p>&copy;2026 AK47 All Rights Reserved.</p>
-    <div class={grid({ columns: { base: 2, lg: 4 }, gap: '4', alignItems: 'center' })}>
-      <p class={css({textAlign: 'center'})}>相互リンク募集中 →</p>
-      <a href="https://www.ak47.work">
-        <Image src={'https://www.ak47.work/assets/banner/ak47_banner.png'} width={200} height={40} alt='AK47 の個人サイト' />
-      </a>
-      <a href="https://ron736382.com">
-        <Image src={'https://ron736382.com/img/banner.gif'} width={200} height={40} alt="RONの創作物/編集物保管庫"/>
-      </a>
-      <a href="https://mizuame.works">
-        <Image src={'https://mizuame.works/banner/mizuame_banner.png'} alt="みずあめのポートフォリオ" width={200} height={40} />
-      </a>
-      <a href="https://www.puniket.com/diva/">
-        <Image src={'https://www.puniket.com/diva/utahineban01.jpg'} alt="歌姫庭園" width={200} height={40} />
-      </a>
-      <a href="https://www.puniket.com/gakumas/">
-        <Image src={'https://www.puniket.com/gakumas/gakumas_banner.jpg'} alt="歌姫のプリマステラ" width={200} height={40} />
-      </a>
+    <div class={grid({ columns: 1, gridRow: 2 , alignItems: 'center' })}>
+      <div class={grid({ columns: { base: 2, lg: 4 }, gap: '4', alignItems: 'center' })}>
+        <p class={css({textAlign: 'center'})}>相互リンク募集中 →</p>
+        <a href="https://www.ak47.work">
+          <Image src={'https://www.ak47.work/assets/banner/ak47_banner.png'} width={200} height={40} alt='AK47 の個人サイト' />
+        </a>
+        <a href="https://ron736382.com">
+          <Image src={'https://ron736382.com/img/banner.gif'} width={200} height={40} alt="RONの創作物/編集物保管庫"/>
+        </a>
+        <a href="https://mizuame.works">
+          <Image src={'https://mizuame.works/banner/mizuame_banner.png'} alt="みずあめのポートフォリオ" width={200} height={40} />
+        </a>
+        <a href="https://www.puniket.com/diva/">
+          <Image src={'https://www.puniket.com/diva/utahineban01.jpg'} alt="歌姫庭園" width={200} height={40} />
+        </a>
+        <a href="https://www.puniket.com/gakumas/">
+          <Image src={'https://www.puniket.com/gakumas/gakumas_banner.jpg'} alt="歌姫のプリマステラ" width={200} height={40} />
+        </a>
+      </div>
+      <div class={vstack({ mt: '4' })}>
+        <iframe src="https://kiiteru.mizuame.app/embed/lb_migii?theme=dark&compact=1" title="Kiiteru now playing" width="320" height="83" style="border:0;border-radius:20px;overflow:hidden;" loading="lazy"></iframe>
+      </div>
     </div>
     <p>Source Code available on <a href="https://github.com/ayamine47/ak47-website"><u>GitHub</u></a>.</p>
   </div>
