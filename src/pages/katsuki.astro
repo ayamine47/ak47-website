@@ -10,14 +10,22 @@ import Content from '../components/Content.astro';
 import Section from '../components/Section.astro';
 import WorksCard from '../components/WorksCard.astro';
 
+import hanshin from '../assets/katsuki/334.jpg';
 import anima from '../assets/katsuki/anima.webp';
 import chocolate from '../assets/katsuki/chocolate.jpg';
 import dokuhaku from '../assets/katsuki/dokuhaku.jpg';
 import hermeneutics from '../assets/katsuki/hermeneutics.png';
+import ittai_itsukara_1 from '../assets/katsuki/ittai_itsukara_1.jpg';
+import ittai_itsukara_2 from '../assets/katsuki/ittai_itsukara_2.jpg';
+import ittai_itsukara_3 from '../assets/katsuki/ittai_itsukara_3.jpg';
+import jasmine from '../assets/katsuki/jasmine.jpg';
 import oni from '../assets/katsuki/oni.jpg';
+import pad from '../assets/katsuki/pad.jpg';
 import semantics from '../assets/katsuki/semantics.png';
 import shitaume from '../assets/katsuki/shitaiume.jpg';
 import star from '../assets/katsuki/star.jpg';
+import sumika_date from '../assets/katsuki/sumika_date.jpg';
+import the_entertainer from '../assets/katsuki/the_entertainer.jpg';
 
 interface WorkMetaData {
   title: string;
@@ -42,6 +50,94 @@ const works: WorkMetaData[] = [
     description: ''
   },
   */
+  {
+    title: '清夏「P っち、デートしよ！」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28278890',
+    image: sumika_date,
+    date: '26.06.07',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: 'プロデューサーは、紫雲清夏とデートをする。\n素直になり切れない二人の、甘酸っぱい物語が辿る結末とは――'
+  },
+  {
+    title: '一体いつから・第 3 話',
+    href: 'https://www.pixiv.net/novel/show.php?id=28244743',
+    image: ittai_itsukara_3,
+    date: '26.06.03',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: '『一体いつから』の歌詞をめぐり、いよいよ雨夜燕と月村手毬の対話が始まる。\n手毬が辿り着く、一つの結論とは――'
+  },
+  {
+    title: '一体いつから・第 2 話',
+    href: 'https://www.pixiv.net/novel/show.php?id=28235657',
+    image: ittai_itsukara_2,
+    date: '26.06.02',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: '月夜野での仕事を終え、宿へ着いた燕のプロデューサーは、手毬のプロデューサーと合流する。\nそこで聞かされた手毬の新曲『一体いつから』がもつメッセージの、彼らなりの解釈とは。'
+  },
+  {
+    title: '一体いつから・第 1 話',
+    href: 'https://www.pixiv.net/novel/show.php?id=28208993',
+    image: ittai_itsukara_1,
+    date: '26.05.30',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: '群馬県・水上の月夜野で仕事をすることになった、月村手毬と雨夜燕の物語。'
+  },
+  {
+    title: '配信と背信、穢れし茉莉花《ジャスミン》',
+    href: 'https://www.pixiv.net/novel/show.php?id=28184789',
+    image: jasmine,
+    date: '26.05.27',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: 'ある炎上事件に巻き込まれてしまった姫崎莉波。\n彼女のプロデューサーは、誰もいない茶室で、何を語るのか――'
+  },
+  {
+    title: 'The Entertainer',
+    href: 'https://www.pixiv.net/novel/show.php?id=28124750',
+    image: the_entertainer,
+    date: '26.05.20',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: '生誕ライブを終えた雨夜燕とそのプロデューサーは、秩父へ遠足をしに行く。\nそこで語られる、燕の在るべき姿とは――'
+  },
+  {
+    title: '「雨夜さん、胸盛ってませんか？」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28119870',
+    image: pad,
+    date: '26.05.20',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: '雨夜燕のプロデューサーは、彼女の『Campus Mode!!』衣装を見て疑念を抱く――\nパッドなのではないか、と。'
+  },
+  {
+    title: '三分三十四秒の創世',
+    href: 'https://www.pixiv.net/novel/show.php?id=28104804',
+    image: hanshin,
+    date: '26.05.18',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: '「4 秒足りない！」雨夜燕のプロデューサーはそう言った。'
+  },
   {
     title: '独白',
     href: 'https://www.pixiv.net/novel/show.php?id=27873656',
