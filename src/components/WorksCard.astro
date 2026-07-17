@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 
 import '../styles/global.css';
 import { css } from '../../styled-system/css';
-import { flex, vstack } from '../../styled-system/patterns';
+import { flex, hstack, vstack } from '../../styled-system/patterns';
 
 interface Props {
   title: string;
@@ -43,22 +43,22 @@ const { title, href, image, alt_text, date, tags, description } = Astro.props;
         justify: 'center',
         rowGap: '1'
       })}>
-        <p class={css({fontSize: { base: '10', md: '12' } })}>{date}</p>
-        <p class={css({fontSize: { base: '16', md: '20' } })}>{title}</p>
+        <p class={css({fontSize: "xs"})}>{date}</p>
+        <p class={css({fontSize: "xl" })}>{title}</p>
         <p class={css({
-          fontSize: {base: '9', md: '14' },
+          fontSize: "sm",
           whiteSpace: 'pre-line'
         })}>
           {description}
         </p>
-        <div class={flex({ direction: 'row', gap: '2', my: '2' })}>
+        <div class={hstack({ gap: '2', my: '2' })}>
           {
             tags.map((tag) => (
               <button class={css({
                 p: '1',
                 border: '1',
                 borderStyle: 'solid',
-                fontSize: {base: '8', md: '14' },
+                fontSize: "sm",
               })}>
                 #{tag}
               </button>

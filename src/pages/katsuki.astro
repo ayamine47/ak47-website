@@ -30,6 +30,7 @@ import star from '../assets/katsuki/star.jpg';
 import sumika_date from '../assets/katsuki/sumika_date.jpg';
 import tanabata2026 from '../assets/katsuki/tanabata2026.jpg';
 import the_entertainer from '../assets/katsuki/the_entertainer.jpg';
+import type_ from '../assets/katsuki/type.jpg';
 
 interface WorkMetaData {
   title: string;
@@ -54,6 +55,17 @@ const works: WorkMetaData[] = [
     description: ''
   },
   */
+  {
+    title: '燕「おいプロデューサー、貴様のタイプは？」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28590214',
+    image: type_,
+    date: '26.07.13',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: 'やんごとなき理由から、プロデューサーへ女性のタイプを訊く燕。\nしかし回答を聞く中で、燕は一つの重大な法則に気づき――'
+  },
   {
     title: 'P「雨夜さんと付き合えますように！」',
     href: 'https://www.pixiv.net/novel/show.php?id=28538675',
@@ -284,20 +296,20 @@ const works: WorkMetaData[] = [
 <BaseLayout pageTitle='紅坂篤樹'>
   <Section heading='Literature'>
       <p class={css({
-        fontSize: '64',
+        fontSize: "6xl",
         alignSelf: 'center',
       })}>
         紅坂篤樹
       </p>
       <p class={css({
-        fontSize: '32',
+        fontSize: "4xl",
         alignSelf: 'center',
       })}>
         <b>A</b>tsuki <b>K</b>osaka
       </p>
 
       <Content text='執筆するもの'>
-        <div class={css({ fontSize: '24' })}>
+        <div class={css({ fontSize: "md" })}>
           <div class={css({ pl: '8' })}>
             <li>説明的文章</li>
             <div class={css({ pl: '8' })}>

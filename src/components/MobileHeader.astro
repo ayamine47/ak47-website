@@ -34,11 +34,11 @@ const { hrefs } = Astro.props;
   <div class={css({
     display: 'flex',
     alignItems: 'center',
-    fontSize: '16',
+    fontSize: "md",
     gap: '4'
   })}>
     <a href='/' class={css({
-      fontSize: '32',
+      fontSize: "2xl",
       ml: '4'
     })}>
       AK47
@@ -79,7 +79,7 @@ const { hrefs } = Astro.props;
         <a
           href={target}
           class:list={[css({
-            fontSize: '24',
+            fontSize: "2xl",
           }), 'nav_item']}
         >
           {name}
@@ -121,10 +121,6 @@ const { hrefs } = Astro.props;
     </a>
     </div>
   </nav>
-
-<!--
-  
--->
 </header>
 
 <script>
@@ -142,7 +138,7 @@ const { hrefs } = Astro.props;
     isMenuOpen = !isMenuOpen;
 
     header.setAttribute('aria-expanded', isMenuOpen.toString());
-    button.setAttribute('aria-label', 
+    button.setAttribute('aria-label',
       isMenuOpen ? 'Close Menu' : 'Open Menu',
     );
     menu.setAttribute('aria-hidden', (!isMenuOpen).toString());

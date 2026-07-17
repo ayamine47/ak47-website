@@ -1,0 +1,32 @@
+p {
+    line-height: 2em;
+}
+
+h1 {
+    font-size: xxx-large;
+}
+
+h2 {
+    font-size: xx-large;
+    margin: 1em 0em 1em 0em;
+}
+
+h3 {
+    font-size: x-large;
+    margin: 1em 0em 0.5em 0em;
+}
+
+main a {
+    color: aqua;
+    text-decoration: underline;
+}
+
+main ul {
+    padding-left: 2em;
+    list-style-type: circle;
+}
+
+section ol {
+    padding-left: 2em;
+    list-style-type: decimal;
+}
