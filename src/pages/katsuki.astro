@@ -10,12 +10,16 @@ import Content from '../components/Content.astro';
 import Section from '../components/Section.astro';
 import WorksCard from '../components/WorksCard.astro';
 
+import yukkuri from '../assets/blog/yukkuri/ocean.webp';
 import hanshin from '../assets/katsuki/334.jpg';
 import anima from '../assets/katsuki/anima.webp';
 import chocolate from '../assets/katsuki/chocolate.jpg';
 import dokuhaku from '../assets/katsuki/dokuhaku.jpg';
+import fireworks from '../assets/katsuki/fireworks.jpg';
 import gun from '../assets/katsuki/gun.jpg';
+import hara from '../assets/katsuki/hara.jpg';
 import hermeneutics from '../assets/katsuki/hermeneutics.png';
+import lilja from '../assets/katsuki/lilja.jpg';
 import ittai_itsukara_1 from '../assets/katsuki/ittai_itsukara_1.jpg';
 import ittai_itsukara_2 from '../assets/katsuki/ittai_itsukara_2.jpg';
 import ittai_itsukara_3 from '../assets/katsuki/ittai_itsukara_3.jpg';
@@ -29,10 +33,12 @@ import shitaume from '../assets/katsuki/shitaiume.jpg';
 import sleep from '../assets/katsuki/sleep.jpg';
 import smartphone from '../assets/katsuki/smartphone.jpg';
 import star from '../assets/katsuki/star.jpg';
+import step3 from '../assets/katsuki/step3.jpg';
 import sumika_date from '../assets/katsuki/sumika_date.jpg';
 import tanabata2026 from '../assets/katsuki/tanabata2026.jpg';
 import the_entertainer from '../assets/katsuki/the_entertainer.jpg';
 import type_ from '../assets/katsuki/type.jpg';
+import yamaoka from '../assets/katsuki/yamaoka.jpg';
 
 interface WorkMetaData {
   title: string;
@@ -57,6 +63,73 @@ const works: WorkMetaData[] = [
     description: ''
   },
   */
+  {
+    title: '書評：フリスク『ゆっくりまわっているようだ』',
+    href: '/blog/review-yukkuri',
+    image: yukkuri,
+    date: '26.08.16',
+    tags: [
+      '説明的文章',
+      '書評',
+      '学園アイドルマスター'
+    ],
+    description: 'フリスク氏の執筆された『ゆっくりまわっているようだ』についての書評。\nユング、ウィトゲンシュタイン、ライプニッツなどを中心に。'
+  },
+  {
+    title: 'P「雨夜さんの顔見たら腹立ってきた」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28858451',
+    image: hara,
+    date: '26.08.14',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: '珍しくご機嫌斜めなプロデューサー。\nその姿に恐怖した燕は、あらぬことを口走って――'
+  },
+  {
+    title: '山岡家 w/ 雨夜さん',
+    href: 'https://www.pixiv.net/novel/show.php?id=28803673',
+    image: yamaoka,
+    date: '26.08.08',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: 'プロデューサーと共に山岡家へ行く燕。\nギャハハ！ラーメンラーメン！'
+  },
+  {
+    title: '雨夜燕・シン STEP3',
+    href: 'https://www.pixiv.net/novel/show.php?id=28787326',
+    image: step3,
+    date: '26.08.06',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: '十王星南の引退を止めるべく暗躍する燕とプロデューサー。\n「闇を裂く黒き羽音」を、その眼に焼きつけろ。'
+  },
+  {
+    title: '「雨夜さん、花火を観に行きましょう」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28752886',
+    image: fireworks,
+    date: '26.08.02',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: '長岡へ行き、花火を観る燕とプロデューサー。\n不死鳥と相対した彼らは、何を思うのか。'
+  },
+  {
+    title: 'リーリヤ「センパイ、一緒に映画を観たい、です……！」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28680983',
+    image: lilja,
+    date: '26.07.24',
+    tags: [
+      '物語的文章',
+      '学園アイドルマスター',
+    ],
+    description: 'センパイを映画に誘うリーリヤ。\nところが、事態は思わぬ方向へ向かって行く――'
+  },
   {
     title: '燕「プロデューサーがくたばっている……！？」',
     href: 'https://www.pixiv.net/novel/show.php?id=28655154',

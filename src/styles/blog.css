@@ -1,4 +1,5 @@
 p {
+    white-space: pre-wrap;
     line-height: 2em;
 }
 
@@ -26,7 +27,19 @@ main ul {
     list-style-type: circle;
 }
 
-section ol {
+ol {
     padding-left: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     list-style-type: decimal;
+}
+
+blockquote {
+    color: lightgray;
+    border-left: 4px;
+    border-color: #8560fe;
+    border-style: solid;
+    padding-left: 12px;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
