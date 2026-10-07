@@ -11,6 +11,9 @@ importers:
       astro:
         specifier: ^6.1.2
         version: 6.1.2(lightningcss@1.31.1)(rollup@4.60.1)(typescript@5.9.3)
+      remark-imgattr:
+        specifier: ^1.1.1
+        version: 1.1.1
     devDependencies:
       '@pandacss/dev':
         specifier: ^1.9.1
@@ -2023,6 +2026,9 @@ packages:
 
   remark-gfm@4.0.1:
     resolution: {integrity: sha512-1quofZ2RQ9EWdeN34S79+KExV1764+wCUGop5CPL1WGdD0ocPpu91lzPGbwWMECpEpd42kJGQwzRfyov9j4yNg==}
+
+  remark-imgattr@1.1.1:
+    resolution: {integrity: sha512-L5fQJfD+JGY2Gak2S8ic4h5TvW3yfcbk3hK4J0mKU66rzIhrNrCrASGvfo/Q6kpnVMasF4rarsTF61AfrpqIbg==}
 
   remark-parse@11.0.0:
     resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
@@ -4653,6 +4659,8 @@ snapshots:
       unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
+
+  remark-imgattr@1.1.1: {}
 
   remark-parse@11.0.0:
     dependencies:

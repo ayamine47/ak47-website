@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import imgAttr from "remark-imgattr";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +13,9 @@ export default defineConfig({
   },
   image: {
     responsiveStyles: true,
+  },
+  markdown: {
+    remarkPlugins: [imgAttr],
   },
   site: "https://www.ak47.work"
 });
