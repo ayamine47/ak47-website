@@ -5,20 +5,38 @@ p {
 
 h1 {
     font-size: xxx-large;
+    font-weight: bold;
+}
+
+h2::before {
+    content: "## ";
+    color: #a1a1aa;
+    font-weight: bold;
 }
 
 h2 {
     font-size: xx-large;
+    font-weight: bold;
     margin: 1em 0em 1em 0em;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: #8650fe;
 }
 
 h3 {
     font-size: x-large;
+    font-weight: bold;
     margin: 1em 0em 0.5em 0em;
 }
 
+h3::before {
+    content: "### ";
+    color: #a1a1aa;
+    font-weight: bold;
+}
+
 main a {
-    color: aqua;
+    color: #06b6d4;
     text-decoration: underline;
 }
 
