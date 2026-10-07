@@ -23,9 +23,30 @@ const { Content } = await render(post);
 
 const textLen = post.body ? post.body.length : 0;
 const read_time = Math.ceil(textLen / 500);
+
+function stripMarkdown(markdown: string) {
+    return markdown
+        .replace(/```[\s\S]*?```/g, '')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/!\[.*?\]\(.*?\)/g, '')
+        .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+        .replace(/#{1,6}\s?.*/g, '')
+        .replace(/^[\s]*[-*+]\s+/gm, '')
+        .replace(/^>\s?/gm, '')
+        .replace(/^(---|___|\*\*\*)\s*$/gm, '')
+        .replace(/(\*\*|__|~~|\*|_)/g, '')
+        .replace(/\r?\n/g, " ")
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function truncateDescription(text: string, maxLength = 80) {
+    const plain = stripMarkdown(text);
+    return plain.length > maxLength ? plain.slice(0, maxLength - 2) + '……' : plain;
+}
 ---
 
-<BlogLayout pageTitle={post.data.title} description={post.data.title}>
+<BlogLayout pageTitle={post.data.title} description={truncateDescription(post.body!)}>
   <main class={flex({
     w: 'full',
     direction: 'column',
@@ -43,7 +64,7 @@ const read_time = Math.ceil(textLen / 500);
       fontFamily: 'mplus'
     })}>
       <u class={css({ fontSize: "4xl" })}>{post.data.title}</u>
-      <p class={css({ color: 'gray.400', my: '4', fontSize: "md" })}>{post.data.date}&nbsp;・&nbsp;{read_time} 分で読めます</p>
+      <p class={css({ color: 'zinc.400', my: '4', fontSize: "md" })}>{post.data.date}&nbsp;・&nbsp;{read_time} 分で読めます</p>
       <div class={css({
         my: '8',
         fontSize: "md",

@@ -57,7 +57,7 @@ function stripMarkdown(markdown: string) {
         .trim();
 }
 
-function truncateDescription(text: string, maxLength = 32) {
+function truncateDescription(text: string, maxLength = 96) {
     const plain = stripMarkdown(text);
     return plain.length > maxLength ? plain.slice(0, maxLength - 2) + '……' : plain;
 }
