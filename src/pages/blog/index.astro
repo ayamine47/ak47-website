@@ -17,6 +17,27 @@ const allPosts = (await getCollection('blog')).sort((a, b) => b.data.date.locale
 const posts = allPosts.slice(0, pageSize);
 const listSlots = Array.from({ length: pageSize }, (_, i) => posts[i] ?? null);
 const totalPages = Math.ceil(allPosts.length / pageSize);
+
+function stripMarkdown(markdown: string) {
+    return markdown
+        .replace(/```[\s\S]*?```/g, '')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/!\[.*?\]\(.*?\)/g, '')
+        .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+        .replace(/#{1,6}\s?.*/g, '')
+        .replace(/^[\s]*[-*+]\s+/gm, '')
+        .replace(/^>\s?/gm, '')
+        .replace(/^(---|___|\*\*\*)\s*$/gm, '')
+        .replace(/(\*\*|__|~~|\*|_)/g, '')
+        .replace(/\r?\n/g, " ")
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function truncateDescription(text: string, maxLength = 32) {
+    const plain = stripMarkdown(text);
+    return plain.length > maxLength ? plain.slice(0, maxLength - 2) + '……' : plain;
+}
 ---
 
 <BaseLayout pageTitle='ブログ記事一覧'>
@@ -34,13 +55,7 @@ const totalPages = Math.ceil(allPosts.length / pageSize);
 									alt_text='Dummy Image'
 									date={post.data.date}
 									tags={[]}
-									description={
-										post.body!.length > 48
-											? (
-												post.body!.replace(/\r?\n/g, "　").slice(0, 46) + '……'
-											)
-											: (post.body!.replace(/\r?\n/g, "　"))
-									}
+									description={truncateDescription(post.body || '')}
 								/>
 							) : (
 								<div aria-hidden='true' class={css({ minH: '80px' })}></div>
@@ -55,9 +70,9 @@ const totalPages = Math.ceil(allPosts.length / pageSize);
 			{
 				Array.from({ length: Math.max(totalPages, 1) }, (_, i) => i + 1).map((page) =>
 					page === 1 ? (
-						<span class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', color: 'white' })}>{page}</span>
+						<span class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', bg: 'white', color: 'black' })}>{page}</span>
 					) : (
-						<a href={`/blog/page/${page}`} class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', bg: 'white' })}>{page}</a>
+						<a href={`/blog/page/${page}`} class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', bg: 'black', color: 'white' })}>{page}</a>
 					)
 				)
 			}

@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+import { css } from '../../styled-system/css';
+
+import Footer from '../components/Footer.astro';
+import HeaderWrapper from '../components/HeaderWrapper.astro';
+import SmoothScroll from '../components/SmoothScroll.astro';
+
+import ak47_logo from '../assets/ak47_icon.png';
+
+interface Props {
+  pageTitle: string;
+  description: string;
+}
+
+const { pageTitle, description } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL('/assets/ak47_og.png', Astro.url);
+---
+
+<html lang="ja">
+  <head prefix="https://ogp.me/ns#">
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href={ak47_logo.src} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="keyword" content="" />
+		<meta name="theme-color" content="rgb(133, 96, 254)" />
+		<meta property="og:locale" content="ja_JP" />
+		<meta property="og:site_name" content="AK47's Page" />
+		<meta property="og:title" content="AK47's Page" />
+		<meta property="og:description" content={description} />
+		<meta
+		  property="og:image"
+		  content={socialImageURL}
+		/>
+		<meta property="og:image:width" content="1920" />
+		<meta property="og:image:height" content="1080" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://www.ak47.work" />
+		<meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ak47_work" />
+    <meta name="twitter:creator" content="@ak47_work" />
+    <title>{pageTitle + " | AK47's Page"}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+  <body class={css({
+    bg: 'black',
+    color: 'white',
+    fontFamily: 'mincho',
+    fontSize: { base: "sm", md: "md" },
+    position: 'relative'
+  })}>
+    <SmoothScroll>
+      <HeaderWrapper />
+      <div class={css({pt: '16'})}>
+        <slot />
+      </div>
+      <Footer />
+    </SmoothScroll>
+  </body>
+</html>
