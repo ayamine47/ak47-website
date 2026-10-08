@@ -35,7 +35,7 @@ h3::before {
     font-weight: bold;
 }
 
-main a {
+main div a {
     color: #06b6d4;
     text-decoration: underline;
 }

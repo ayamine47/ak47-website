@@ -1,1 +1,11 @@
 @layer reset, base, tokens, recipes, utilities;
+
+.img-w240 {
+    width: 480px;
+    height: auto;
+}
+
+.img-w480 {
+    width: 480px;
+    height: auto;
+}

@@ -6,7 +6,7 @@ import { css } from '../../styled-system/css';
 import { grid, flex, vstack } from '../../styled-system/patterns';
 ---
 
-<hr>
+<hr class={css({ color: '#8560fe', w: 'full' })}>
 <footer class={css({p: '4', fontSize: "md"})}>
   <div class={flex({
     direction: { base: 'column', lg: 'row' },
@@ -14,7 +14,7 @@ import { grid, flex, vstack } from '../../styled-system/patterns';
     justify: 'space-between',
     gap: '4'
   })}>
-    <p>&copy;2026 AK47 All Rights Reserved.</p>
+    <p class={css({ fontFamily: 'oranienbaum' })}>&copy;2026 AK47 All Rights Reserved.</p>
     <div class={grid({ columns: 1, gridRow: 2 , alignItems: 'center' })}>
       <div class={grid({ columns: { base: 2, lg: 4 }, gap: '4', alignItems: 'center' })}>
         <p class={css({textAlign: 'center'})}>相互リンク募集中 →</p>
@@ -50,6 +50,6 @@ import { grid, flex, vstack } from '../../styled-system/patterns';
         <iframe src="https://kiiteru.mizuame.app/embed/lb_migii?theme=dark&compact=1" title="Kiiteru now playing" width="320" height="83" style="border:0;border-radius:20px;overflow:hidden;" loading="lazy"></iframe>
       </div>
     </div>
-    <p>Source Code available on <a href="https://github.com/ayamine47/ak47-website"><u>GitHub</u></a>.</p>
+    <p class={css({ fontFamily: 'oranienbaum' })}>Source Code available on <a href="https://github.com/ayamine47/ak47-website"><u>GitHub</u></a>.</p>
   </div>
 </footer>

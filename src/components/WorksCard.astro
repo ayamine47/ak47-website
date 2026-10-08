@@ -8,14 +8,15 @@ import { flex, hstack, vstack } from '../../styled-system/patterns';
 interface Props {
   title: string;
   href: string;
-  image: ImageMetadata;
+  withImage?: boolean;
+  image?: ImageMetadata;
   alt_text: string;
   date: string;
   tags: string[];
   description: string;
 }
 
-const { title, href, image, alt_text, date, tags, description } = Astro.props;
+const { title, href, withImage, image, alt_text, date, tags, description } = Astro.props;
 ---
 
 <div class={css({ m: '4' })}>
@@ -30,20 +31,24 @@ const { title, href, image, alt_text, date, tags, description } = Astro.props;
       borderColor: 'white',
       borderStyle: 'solid'
     })}>
-      <Image
-        src={image}
-        alt={alt_text}
-        class={css({
-          width: { base: '20', md: '120' },
-          objectFit: 'contain'
-        })}
-      />
+    {
+      image ?
+        <Image
+          src={image}
+          alt={alt_text}
+          class={css({
+            width: { base: '20', md: '120' },
+            objectFit: 'contain'
+          })}
+        />
+      : <div class={css({ px: '4' })}></div>
+    }
       <div class={vstack({
         alignItems: 'start',
         justify: 'center',
         rowGap: '1'
       })}>
-        <p class={css({fontSize: "xs", color: 'zinc.400' })}>{date}</p>
+        <p class={css({fontSize: 'sm', fontFamily: 'oranienbaum', color: 'zinc.400' })}>{date}</p>
         <p class={css({fontSize: "xl" })}>{title}</p>
         <p class={css({
           fontSize: "sm",

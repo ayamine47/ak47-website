@@ -61,11 +61,11 @@ function truncateDescription(text: string, maxLength = 80) {
       p: '8',
       bg: 'zinc.800',
       border: '1',
-      borderColor: 'white',
+      borderColor: '#8560fe',
       borderStyle: 'solid',
       fontFamily: 'mplus'
     })}>
-      <u class={css({ fontSize: "4xl" })}>{post.data.title}</u>
+      <u class={css({ fontSize: "4xl", fontWeight: 'bold' })}>{post.data.title}</u>
       <p class={css({ color: 'zinc.400', my: '4', fontSize: "md" })}>{post.data.date}&nbsp;・&nbsp;{read_time} 分で読めます</p>
       <div class={css({
         my: '8',
@@ -74,18 +74,20 @@ function truncateDescription(text: string, maxLength = 80) {
         <Content />
       </div>
     </div>
-
     <a
       href='/blog'
       class={css({
-        my: '8',
-        bg: 'black',
+        my: '4',
+        px: '8',
+        py: '4',
+        bg: '#8560fe',
         color: 'white',
-        alignSelf: 'center',
         fontSize: "2xl",
+        fontFamily: 'mplus',
+        fontWeight: 'bold'
       })}
     >
-      <u>戻　る</u>
+      もどる
     </a>
   </main>
   </Section>

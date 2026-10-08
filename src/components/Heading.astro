@@ -6,8 +6,9 @@ import { css } from '../../styled-system/css';
 <div class={css({
   textAlign: 'center',
   fontSize: { base: "6xl", md: "8xl" },
+  fontFamily: 'oranienbaum',
   marginBottom: '16'
 })}>
   <slot />
-  <hr>
+  <hr class={css({ color: '#8560fe', w: 'full' })}>
 </div>

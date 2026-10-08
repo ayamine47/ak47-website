@@ -19,7 +19,8 @@ export default defineConfig({
       tokens: {
         fonts: {
           mincho: { value: "'Zen Old Mincho', sans-serif" },
-          mplus: { value: "'M PLUS 1', sans" }
+          mplus: { value: "'M PLUS 1', sans" },
+          oranienbaum: { value: "'Oranienbaum', serif" },
         }
       }
     },
