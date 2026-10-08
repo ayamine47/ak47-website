@@ -94,11 +94,11 @@ function truncateDescription(text: string, maxLength = 96) {
       {
         Array.from({ length: totalPages }, (_, i) => i + 1).map((page) =>
           page === currentPage ? (
-            <span class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', bg: 'white', color: 'black' })}>{page}</span>
+            <span class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', bg: '#8560fe', color: 'white', fontFamily: 'oranienbaum' })}>{page}</span>
           ) : page === 1 ? (
-            <a href={`/blog`} class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', bg: 'black', color: 'white' })}>1</a>
+            <a href={`/blog`} class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', bg: 'black', color: 'white', fontFamily: 'oranienbaum' })}>1</a>
           ) : (
-            <a href={`/blog/page/${page}`} class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', bg: 'black', color: 'white' })}>{page}</a>
+            <a href={`/blog/page/${page}`} class={css({ px: '4', py: '2', border: '1', borderColor: 'white', borderStyle: 'solid', bg: 'black', color: 'white', fontFamily: 'oranienbaum' })}>{page}</a>
           )
         )
       }
