@@ -39,6 +39,7 @@ const { hrefs } = Astro.props;
   })}>
     <a href='/' class={css({
       fontSize: "2xl",
+      fontFamily: 'oranienbaum',
       ml: '4'
     })}>
       AK47
@@ -50,7 +51,7 @@ const { hrefs } = Astro.props;
     aria-controls='header_nav'
     aria-label='Open Menu'
     id='menu_button'
-    class={css({ mr: '4' })}
+    class={css({ fontFamily: 'oranienbaum', mr: '4' })}
   >
   Menu
   </button>
@@ -80,6 +81,7 @@ const { hrefs } = Astro.props;
           href={target}
           class:list={[css({
             fontSize: "2xl",
+            fontFamily: 'oranienbaum',
           }), 'nav_item']}
         >
           {name}
