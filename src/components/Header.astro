@@ -23,8 +23,9 @@ const { hrefs } = Astro.props;
   zIndex: 9999,
   py: '2',
   m: '0',
-  borderBottom: '3',
-  borderBottomColor: 'white',
+  color: '#72b6e3',
+  borderBottom: '4',
+  borderBottomColor: '#72b6e3',
   borderBottomStyle: 'solid',
   fontFamily: 'oranienbaum'
 })}>
@@ -42,7 +43,7 @@ const { hrefs } = Astro.props;
     </a>
     {
       hrefs.map(({ name, target }) => (
-        <a href={target}>{name}</a>
+        <a href={target} class={css({ fontSize: 'xl' })}>{name}</a>
       ))
     }
   </div>
