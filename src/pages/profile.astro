@@ -31,9 +31,9 @@ import ak47_icon from '../assets/ak47_icon.png';
      <Content text='名義'>
         <div class={css({ pl: { base: '6', md: '8' }, fontSize: { base: "sm", md: "md" } })}>
           <li>AK47&emsp;&ensp; : 以下の名義の同一性を保持するための名義</li>
-          <li>紅坂篤樹 : 文芸・論考・批評</li>
-          <li>彩峰冬総 : 音楽</li>
-          <li>彩峰黎斗 : エンジニアリング</li>
+          <li><a href="/katsuki" class={css({ color: '#72b6e3' })}>紅坂篤樹 : 文芸・論考・批評</a></li>
+          <li><a href="/kazusa" class={css({ color: '#72b6e3' })}>彩峰冬総 : 音楽</a></li>
+          <li><a href="/kuroto" class={css({ color: '#72b6e3' })}>彩峰黎斗 : エンジニアリング</a></li>
           <li>彩峰鋼一 : 演出・映像</li>
           <li>彩峰慶次 : プロデュース</li>
           <!-- <li>ミギー&emsp; : まあ、そう呼ばれる時もありますよね</li> -->
@@ -42,8 +42,8 @@ import ak47_icon from '../assets/ak47_icon.png';
       
      <Content text='学歴'>
         <div class={css({ pl: { base: '6', md: '8' }, fontSize: { base: "sm", md: "md" } })}>
-          <li>25.04 -【現在】 <a href="https://www.jinbun.tsukuba.ac.jp"><u>筑波大学 人文・文化学群 人文学類</u></a></li>
-          <li>22.04 - 25.03 &emsp;<a href="https://www.metro.ed.jp/tamakagakugijutsu-h"><u>東京都立多摩科学技術高等学校</u></a></li>
+          <li>25.04 -【現在】 <a href="https://www.jinbun.tsukuba.ac.jp" class={css({ color: '#72b6e3' })}>筑波大学 人文・文化学群 人文学類</a></li>
+          <li>22.04 - 25.03 &emsp;<a href="https://www.metro.ed.jp/tamakagakugijutsu-h" class={css({ color: '#72b6e3' })}>東京都立多摩科学技術高等学校</a></li>
         </div>
      </Content>
 
@@ -51,13 +51,14 @@ import ak47_icon from '../assets/ak47_icon.png';
         <div class={css({ pl: { base: '6', md: '8' }, fontSize: { base: "sm", md: "md" } })}>
           <li>日本語 (母語)</li>
           <li>英　語</li>
-          <li>ドイツ語 : 中級レベル</li>
-          <li>フランス語 : 中級レベル</li>
-          <li>サンスクリット : 中級レベル</li>
-          <li>チベット語 : 中級レベル</li>
-          <li>聖書ヘブライ語 : 初級レベル</li>
-          <li>古典ギリシャ語 : 初級レベル</li>
-          <li>ラテン語 : 初級レベル</li>
+          <li>フランス語 : かなり講読できる</li>
+          <li>サンスクリット : かなり講読できる</li>
+          <li>ドイツ語 : 結構講読できる</li>
+          <li>チベット語 : 結構講読できる</li>
+          <li>聖書ヘブライ語 : 少し講読できる</li>
+          <li>古典ギリシャ語 : かじった</li>
+          <li>ラテン語 : かじった</li>
+          <li>古英語 : かじった</li>
         </div>
      </Content>
 
@@ -70,36 +71,69 @@ import ak47_icon from '../assets/ak47_icon.png';
 
      <Content text='所属組織'>
         <div class={css({ pl: { base: '6', md: '8' }, fontSize: { base: "sm", md: "md" } })}>
-          <li>25.07 -【現在】 <a href="https://word-ac.net"><u>WORD 編集部</u></li></a>
-          <li>25.05 -【現在】 <a href="https://www.wide.ad.jp"><u>WIDE Project</u></li></a>
-          <li>同&emsp;&ensp; -【現在】 <a href="https://jr1ztt.net"><u>筑波大学電気通信研究会</u></li></a>
-          <li>同&emsp;&ensp; -【現在】 <a href="https://www.stb.tsukuba.ac.jp/~tabi"><u>筑波大学旅と鉄道の会</u></li></a>
-          <li>同&emsp;&ensp; -【現在】 <a href="https://gsk-tsukuba.net"><u>筑波大学現代視覚文化研究会</u></li></a>
-          <li>25.01 -【現在】 <a href="https://twitter.com/KUVNLovers"><u>京大美少女ゲーム同好会 (25.05 -【現職】副会長)</u></a></li>
+          <li>25.07 -【現在】 <a href="https://word-ac.net" class={css({ color: '#72b6e3' })}>WORD 編集部</li></a>
+          <li>25.05 -【現在】 <a href="https://www.wide.ad.jp" class={css({ color: '#72b6e3' })}>WIDE Project</li></a>
+          <li>同&emsp;&ensp; -【現在】 <a href="https://jr1ztt.net" class={css({ color: '#72b6e3' })}>筑波大学電気通信研究会</li></a>
+          <li>同&emsp;&ensp; -【現在】 <a href="https://www.stb.tsukuba.ac.jp/~tabi" class={css({ color: '#72b6e3' })}>筑波大学旅と鉄道の会</li></a>
+          <li>同&emsp;&ensp; -【現在】 <a href="https://gsk-tsukuba.net" class={css({ color: '#72b6e3' })}>筑波大学現代視覚文化研究会</li></a>
+          <li>25.01 -【現在】 <a href="https://twitter.com/KUVNLovers" class={css({ color: '#72b6e3' })}>京大美少女ゲーム同好会 (25.05 -【現職】副会長)</a></li>
           <li>22.09 - 25.03 &emsp;多摩科技無線工作部 (22.12 - 23.12 副部長)</li>
-          <li>22.04 - 25.03 &emsp;<a href="https://twitter.com/tamakagi_pc"><u>多摩科技パソコン部 (23.02 - 23.12 総務)</u></a></li>
+          <li>22.04 - 25.03 &emsp;<a href="https://twitter.com/tamakagi_pc" class={css({ color: '#72b6e3' })}>多摩科技パソコン部 (23.02 - 23.12 総務)</a></li>
         </div>
      </Content>
 
      <Content text='興味・関心'>
         <div class={css({ pl: { base: '6', md: '8' }, fontSize: { base: "sm", md: "md" } })}>
-          <li>インド論理学</li>
-          <li>深層心理学</li>
-          <li>中世スコラ神学</li>
-          <li>数学 (圏論、計算機数学、数理論理学、数学基礎論)</li>
-          <li>情報学 (ネットワークインフラ・セキュリティ)</li>
+          <li>インド論理学 (ニヤーヤ、仏教論理学)</li>
+          <li>仏教学 (唯識)</li>
+          <li>ユング心理学</li>
+          <li>中世スコラ神学 (アウグスティヌス、トマス・アクィナス、エックハルト)</li>
+          <li>数学 (圏論、数理論理学)</li>
+          <li>情報学 (ネットワークインフラ、セキュリティ)</li>
         </div>
      </Content>
 
      <Content text='趣味'>
         <div class={css({ pl: { base: '6', md: '8' }, fontSize: { base: "sm", md: "md" } })}>
+          <li>創作 (文芸、音楽)</li>
+          <li>プログラミング</li>
+          <li>神社・寺院見学</li>
           <li>旅行、乗り鉄</li>
           <li>クラシックピアノ</li>
+          <li>特撮</li>
+          <li>美少女ゲーム</li>
+          <li>ネットワークインフラ構築、運用</li>
+          <li>アマチュア無線コンテスト</li>
+        </div>
+     </Content>
+
+     <Content text='苦手なもの'>
+        <div class={css({ pl: { base: '6', md: '8' }, fontSize: { base: "sm", md: "md" } })}>
+          <li>現代社会</li>
+          <li>女性声優</li>
+          <li>P ドル</li>
         </div>
      </Content>
 
      <Content text='好きな人物'>
         <div class={css({ pl: { base: '6', md: '8' }, fontSize: { base: "sm", md: "md" } })}>
+          <li>エンターテイナー</li>
+          <div class={css({ pl: { base: '6', md: '8' } })}>
+            <li>三浦大知</li>
+          </div>
+          <li>声優</li>
+          <div class={css({ pl: { base: '6', md: '8' } })}>
+            <li>茅野愛衣</li>
+            <li>遠野そよぎ</li>
+          </div>
+          <li>脚本家</li>
+          <div class={css({ pl: { base: '6', md: '8' } })}>
+            <li>井上敏樹</li>
+            <li>虚淵玄</li>
+            <li>小林靖子</li>
+            <li>高橋悠也</li>
+            <li>吉宗鋼紀</li>
+          </div>
           <li>アニメ・ゲーム</li>
           <div class={css({ pl: { base: '6', md: '8' } })}>
             <li>『アイドルマスター　シャイニーカラーズ』幽谷霧子</li>

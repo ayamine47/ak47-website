@@ -6,8 +6,14 @@ import { css } from '../../styled-system/css';
 import { grid, flex, vstack } from '../../styled-system/patterns';
 ---
 
-<hr class={css({ color: '#8560fe', w: 'full' })}>
-<footer class={css({p: '4', fontSize: "md"})}>
+<footer class={css({
+  bg: '#251348',
+  p: '4',
+  borderTop: '4',
+  borderTopColor: '#72b6e3',
+  borderTopStyle: 'solid',
+  fontSize: "md"
+})}>
   <div class={flex({
     direction: { base: 'column', lg: 'row' },
     align: 'center',
@@ -50,6 +56,6 @@ import { grid, flex, vstack } from '../../styled-system/patterns';
         <iframe src="https://kiiteru.mizuame.app/embed/lb_migii?theme=dark&compact=1" title="Kiiteru now playing" width="320" height="83" style="border:0;border-radius:20px;overflow:hidden;" loading="lazy"></iframe>
       </div>
     </div>
-    <p class={css({ fontFamily: 'oranienbaum' })}>Source Code available on <a href="https://github.com/ayamine47/ak47-website"><u>GitHub</u></a>.</p>
+    <p class={css({ fontFamily: 'oranienbaum' })}>Source Code available on <a href="https://github.com/ayamine47/ak47-website" class={css({ color: '#72b6e3' })}>GitHub</a>.</p>
   </div>
 </footer>
