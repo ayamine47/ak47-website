@@ -1,6 +1,7 @@
 ---
 title: "縦書き Typst 組版の際に遭遇した問題たち"
 date: "26.07.18"
+keywords: "縦書きTypst 組版 kanata 技術書典21"
 ---
 
 ## はじめに

@@ -14,7 +14,7 @@ interface Props {
 const { pageTitle } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL('/assets/ak47_og.png', Astro.url);
+const socialImageURL = new URL('/assets/main_og.png', Astro.url);
 ---
 
 <html lang="ja">
@@ -25,11 +25,11 @@ const socialImageURL = new URL('/assets/ak47_og.png', Astro.url);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 		<meta name="description" content="AK47 のホームページ" />
-		<meta name="keyword" content="" />
+		<meta name="keyword" content="AK47 紅坂篤樹 'Atsuki Kosaka' 彩峰冬総 'Kazusa Ayamine' 彩峰黎斗 'Kuroto Ayamine'" />
 		<meta name="theme-color" content="rgb(133, 96, 254)" />
 		<meta property="og:locale" content="ja_JP" />
 		<meta property="og:site_name" content="AK47's HomePage" />
-		<meta property="og:title" content="AK47's HomePage" />
+		<meta property="og:title" content={pageTitle + " | AK47's HomePage"} />
 		<meta property="og:description" content="AK47 のホームページ" />
 		<meta
 		  property="og:image"

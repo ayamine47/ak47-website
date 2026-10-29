@@ -3,7 +3,7 @@ import '../../styles/global.css';
 import { css } from '../../../styled-system/css';
 import { flex, grid } from '../../../styled-system/patterns';
 
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import TsubameLayout from '../../layouts/TsubameLayout.astro';
 
 import Content from '../../components/Content.astro';
 import Section from '../../components/Section.astro';
@@ -474,7 +474,7 @@ const sortedCharacterTags = Object.entries(characterTagCounts)
 
 ---
 
-<BaseLayout pageTitle='特集：雨夜燕'>
+<TsubameLayout pageTitle='特集：雨夜燕'>
   <Section heading='Literature'>
       <p class={css({
         fontSize: "6xl",
@@ -685,7 +685,7 @@ const sortedCharacterTags = Object.entries(characterTagCounts)
         }
       </Content>
   </Section>
-</BaseLayout>
+</TsubameLayout>
 
 <script>
   const container = document.getElementById('novel-works-container');

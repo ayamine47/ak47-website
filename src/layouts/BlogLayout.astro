@@ -10,12 +10,13 @@ import ak47_logo from '../assets/ak47_icon.png';
 interface Props {
   pageTitle: string;
   description: string;
+  keywords: string;
 }
 
-const { pageTitle, description } = Astro.props;
+const { pageTitle, description, keywords } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL('/assets/ak47_og.png', Astro.url);
+const socialImageURL = new URL('/assets/main_og.png', Astro.url);
 ---
 
 <html lang="ja">
@@ -26,7 +27,7 @@ const socialImageURL = new URL('/assets/ak47_og.png', Astro.url);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
-		<meta name="keyword" content="" />
+		<meta name="keyword" content={keywords} />
 		<meta name="theme-color" content="rgb(133, 96, 254)" />
 		<meta property="og:locale" content="ja_JP" />
 		<meta property="og:site_name" content="AK47's HomePage" />
