@@ -1,0 +1,719 @@
+---
+import '../../styles/global.css';
+import { css } from '../../../styled-system/css';
+import { flex, grid } from '../../../styled-system/patterns';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import Content from '../../components/Content.astro';
+import Section from '../../components/Section.astro';
+import WorksCard from '../../components/WorksCard.astro';
+
+import chocolate from '../../assets/katsuki/chocolate.jpg';
+import daigakusei from '../../assets/katsuki/daigakusei.jpg';
+import devil from '../../assets/katsuki/devil.jpg';
+import dokuhaku from '../../assets/katsuki/dokuhaku.jpg';
+import enkan from '../../assets/katsuki/enkan.jpg';
+import fireworks from '../../assets/katsuki/fireworks.jpg';
+import gun from '../../assets/katsuki/gun.jpg';
+import hanshin from '../../assets/katsuki/334.jpg';
+import hara from '../../assets/katsuki/hara.jpg';
+import ittai_itsukara_1 from '../../assets/katsuki/ittai_itsukara_1.jpg';
+import ittai_itsukara_2 from '../../assets/katsuki/ittai_itsukara_2.jpg';
+import ittai_itsukara_3 from '../../assets/katsuki/ittai_itsukara_3.jpg';
+import love_game from '../../assets/katsuki/love_game.jpg';
+import nuku from '../../assets/katsuki/nuku.jpg';
+import oni from '../../assets/katsuki/oni.jpg';
+import pad from '../../assets/katsuki/pad.jpg';
+import pr1de from '../../assets/katsuki/pr1de.jpg';
+import sekigahara from '../../assets/katsuki/sekigahara.jpg';
+import shitai from '../../assets/katsuki/shitai.jpg';
+import shitaiume from '../../assets/katsuki/shitaiume.jpg';
+import sleep from '../../assets/katsuki/sleep.jpg';
+import smartphone from '../../assets/katsuki/smartphone.jpg';
+import star from '../../assets/katsuki/star.jpg';
+import step3 from '../../assets/katsuki/step3.jpg';
+import tanabata2026 from '../../assets/katsuki/tanabata2026.jpg';
+import the_entertainer from '../../assets/katsuki/the_entertainer.jpg';
+import type_ from '../../assets/katsuki/type.jpg';
+import yamaoka from '../../assets/katsuki/yamaoka.jpg';
+import NovelWorksCard from '../../components/katsuki/tsubame/NovelWorksCard.astro';
+
+interface WorkMetaData {
+  title: string;
+  href: string;
+  image?: ImageMetadata;
+  date: string;
+  series?: string;
+  series_number?: number;
+  tags: string[];
+  description: string;
+}
+
+const novel_series: WorkMetaData[]= [
+  // template
+  /*
+  {
+    title: '',
+    href: '',
+    image: ,
+    date: '',
+    tags: [
+      ''
+    ],
+    description: ''
+  },
+  */
+  {
+    title: '円環時空',
+    href: 'https://www.pixiv.net/novel/series/16602912',
+    image: enkan,
+    date: '26.06 -',
+    tags: [
+      ''
+    ],
+    description: '燕とプロデューサーが、冬の H.I.F. に敗れた後の時空。\n悲しみを繰り返し、彼らはどこへ行くのだろう？'
+  },
+  {
+    title: '大学生時空',
+    href: 'https://www.pixiv.net/novel/series/15436869',
+    image: daigakusei,
+    date: '26.01 -',
+    tags: [
+      ''
+    ],
+    description: '燕が、プロデューサーと共に “ 偶像という呪い ” を解き、\n“ 普通の大学生 ” へ戻り、そして進む時空。'
+  },
+  {
+    title: '死体時空',
+    href: 'https://www.pixiv.net/novel/series/15707861',
+    image: shitai,
+    date: '26.03 - 26.05',
+    tags: [
+      ''
+    ],
+    description: '燕が、プロデューサーの殺人を隠す時空。\n罪人の告解から真実を知った時、彼女は黒き王となる――'
+  },
+]
+
+const review_works: WorkMetaData[]= [
+  // template
+  /*
+  {
+    title: '',
+    href: '',
+    image: ,
+    date: '',
+    tags: [
+      ''
+    ],
+    description: ''
+  },
+  */
+  {
+    title: '雨夜燕は不人気キャラである',
+    href: '/blog/tsubame-is-not-popular',
+    date: '26.10.08',
+    tags: [
+      '説明的文章'
+    ],
+    description: 'なぜ、雨夜燕は不人気キャラであるのか。\nいくつかの理由を挙げ、その原因を考察する。'
+  },
+];
+
+const novel_works: WorkMetaData[] = [
+  // template
+  /*
+  {
+    title: '',
+    href: '',
+    image: ,
+    date: '',
+    tags: [
+      ''
+    ],
+    description: ''
+  },
+  */
+  {
+    title: '燕「小悪魔ぁッ！」リーリヤ「！」',
+    href: 'https://www.pixiv.net/novel/show.php?id=29319007',
+    image: devil,
+    date: '26.10.07',
+    tags: [
+      '物語的文章',
+      '葛城リーリヤ'
+    ],
+    description: '寮にて、「小悪魔ぁッ！」と絶叫する燕。<br>それを聞きつけたリーリヤが、燕に声をかけて――'
+  },
+  {
+    title: '「おいプロデューサー、関ヶ原へ行くぞ」',
+    href: 'https://www.pixiv.net/novel/show.php?id=29133031',
+    image: sekigahara,
+    date: '26.09.15',
+    series: "大学生時空",
+    series_number: 7,
+    tags: [
+      '物語的文章',
+          ],
+    description: 'プロデューサーに、関ヶ原へ行こうと提案する燕。<br>彼らは天下分け目の戦いの痕跡を巡り、何を思うのか――'
+  },
+  {
+    title: 'プライド・PR1DE',
+    href: 'https://www.pixiv.net/novel/show.php?id=29014823',
+    image: pr1de,
+    date: '26.08.31',
+    tags: [
+      '物語的文章',
+          ],
+    description: '事務所のテレビを使って、ある番組を観ていたプロデューサー。<br>そこに燕が現れ、二人は番組を一緒に観ることに――'
+  },
+  {
+    title: 'P「雨夜さんの顔見たら腹立ってきた」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28858451',
+    image: hara,
+    date: '26.08.14',
+    tags: [
+      '物語的文章',
+          ],
+    description: '珍しくご機嫌斜めなプロデューサー。<br>その姿に恐怖した燕は、あらぬことを口走って――'
+  },
+  {
+    title: '山岡家 w/ 雨夜さん',
+    href: 'https://www.pixiv.net/novel/show.php?id=28803673',
+    image: yamaoka,
+    date: '26.08.08',
+    tags: [
+      '物語的文章',
+          ],
+    description: 'プロデューサーと共に山岡家へ行く燕。<br>ギャハハ！ラーメンラーメン！'
+  },
+  {
+    title: '雨夜燕・シン STEP3',
+    href: 'https://www.pixiv.net/novel/show.php?id=28787326',
+    image: step3,
+    date: '26.08.06',
+    series: "STEP3-IF",
+    series_number: 1,
+    tags: [
+      '物語的文章',
+      '十王星南',
+      "藤田ことね",
+      "秦谷美鈴",
+      "花海佑芽"
+    ],
+    description: '十王星南の引退を止めるべく暗躍する燕とプロデューサー。<br>「闇を裂く黒き羽音」を、その眼に焼きつけろ。'
+  },
+  {
+    title: '「雨夜さん、花火を観に行きましょう」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28752886',
+    image: fireworks,
+    date: '26.08.02',
+    series: "大学生時空",
+    series_number: 6,
+    tags: [
+      '物語的文章',
+          ],
+    description: '長岡へ行き、花火を観る燕とプロデューサー。<br>不死鳥と相対した彼らは、何を思うのか。'
+  },
+  {
+    title: '燕「プロデューサーがくたばっている……！？」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28655154',
+    image: sleep,
+    date: '26.07.21',
+    tags: [
+      '物語的文章',
+          ],
+    description: '大量のタスクに忙殺されるプロデューサー。<br>そこへ、燕がやって来て――'
+  },
+  {
+    title: '髪掠めて去った銃弾',
+    href: 'https://www.pixiv.net/novel/show.php?id=28635982',
+    image: gun,
+    date: '26.07.19',
+    series: "円環時空",
+    series_number: 2,
+    tags: [
+      '物語的文章',
+          ],
+    description: '終ぞ頂点に届かなかった、燕とプロデューサー。<br>彼らによる、「責任」の取り合いの行く末は――'
+  },
+  {
+    title: '燕「おいプロデューサー、貴様のタイプは？」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28590214',
+    image: type_,
+    date: '26.07.13',
+    tags: [
+      '物語的文章',
+          ],
+    description: 'やんごとなき理由から、プロデューサーへ女性のタイプを訊く燕。<br>しかし回答を聞く中で、燕は一つの重大な法則に気づき――'
+  },
+  {
+    title: 'P「雨夜さんと付き合えますように！」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28538675',
+    image: tanabata2026,
+    date: '26.07.07',
+    tags: [
+      '物語的文章',
+          ],
+    description: 'プロデューサーが短冊に書いた内容の噂が、学園中に広まった。<br>それを耳にした燕は、プロデューサーを詰問するが――'
+  },
+  {
+    title: 'P「燕じゃ抜けない」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28495911',
+    image: nuku,
+    date: '26.07.02',
+    tags: [
+      '物語的文章',
+          ],
+    description: '「燕じゃ抜けない」というプロデューサーの発言を盗み聞きした燕。<br>暴走した彼女がとった行動とは――！？'
+  },
+  {
+    title: '「雨夜さん、愛してるゲームやりましょうよ」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28409723',
+    image: love_game,
+    date: '26.06.22',
+    tags: [
+      '物語的文章',
+      '十王星南'
+          ],
+    description: 'プロデューサーは、燕に愛してるゲームを仕掛ける。<br>勝負の行方、そして、勝者が叶える願いとは――'
+  },
+  {
+    title: '燕「プロデューサーのスマフォ……？」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28389456',
+    image: smartphone,
+    date: '26.06.20',
+    series: "円環時空",
+    series_number: 1,
+    tags: [
+      '物語的文章',
+          ],
+    description: 'プロデューサーのスマートフォンを覗き見る燕。<br>しかし、彼女が見たものは、予想だにしないもので――'
+  },
+  {
+    title: '一体いつから・第 3 話',
+    href: 'https://www.pixiv.net/novel/show.php?id=28244743',
+    image: ittai_itsukara_3,
+    date: '26.06.03',
+    series: "大学生時空",
+    series_number: 4,
+    tags: [
+      '物語的文章',
+      '月村手毬'
+    ],
+    description: '『一体いつから』の歌詞をめぐり、いよいよ雨夜燕と月村手毬の対話が始まる。<br>手毬が辿り着く、一つの結論とは――'
+  },
+  {
+    title: '一体いつから・第 2 話',
+    href: 'https://www.pixiv.net/novel/show.php?id=28235657',
+    image: ittai_itsukara_2,
+    date: '26.06.02',
+    series: "大学生時空",
+    series_number: 3,
+    tags: [
+      '物語的文章',
+      '月村手毬'
+    ],
+    description: '月夜野での仕事を終え、宿へ着いた燕のプロデューサーは、手毬のプロデューサーと合流する。<br>そこで聞かされた手毬の新曲『一体いつから』がもつメッセージの、彼らなりの解釈とは。'
+  },
+  {
+    title: '一体いつから・第 1 話',
+    href: 'https://www.pixiv.net/novel/show.php?id=28208993',
+    image: ittai_itsukara_1,
+    date: '26.05.30',
+    series: "大学生時空",
+    series_number: 2,
+    tags: [
+      '物語的文章',
+      '月村手毬'
+    ],
+    description: '群馬県・水上の月夜野で仕事をすることになった、月村手毬と雨夜燕の物語。'
+  },
+  {
+    title: 'The Entertainer',
+    href: 'https://www.pixiv.net/novel/show.php?id=28124750',
+    image: the_entertainer,
+    date: '26.05.20',
+    series: "大学生時空",
+    series_number: 1,
+    tags: [
+      '物語的文章',
+    ],
+    description: '生誕ライブを終えた雨夜燕とそのプロデューサーは、秩父へ遠足をしに行く。<br>そこで語られる、燕の在るべき姿とは――'
+  },
+  {
+    title: '「雨夜さん、胸盛ってませんか？」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28119870',
+    image: pad,
+    date: '26.05.20',
+    tags: [
+      '物語的文章',
+    ],
+    description: '雨夜燕のプロデューサーは、彼女の『Campus Mode!!』衣装を見て疑念を抱く――<br>パッドなのではないか、と。'
+  },
+  {
+    title: '三分三十四秒の創世',
+    href: 'https://www.pixiv.net/novel/show.php?id=28104804',
+    image: hanshin,
+    date: '26.05.18',
+    tags: [
+      '物語的文章',
+    ],
+    description: '「4 秒足りない！」雨夜燕のプロデューサーはそう言った。'
+  },
+  {
+    title: '独白',
+    href: 'https://www.pixiv.net/novel/show.php?id=27873656',
+    image: dokuhaku,
+    date: '26.04.21',
+    series: "死体時空",
+    series_number: 2,
+    tags: [
+      '物語的文章',
+      '秦谷美鈴'
+    ],
+    description: '雨夜燕のプロデューサー。<br>彼はどのようにして、雨夜燕を裏切ったのか――'
+  },
+  {
+    title: '死体を埋める雨夜さん',
+    href: 'https://www.pixiv.net/novel/show.php?id=27475886',
+    image: shitaiume,
+    date: '26.03.08',
+    series: "死体時空",
+    series_number: 1,
+    tags: [
+      '物語的文章',
+    ],
+    description: '人を殺してしまった、雨夜燕のプロデューサー。<br>その事実を耳にした雨夜燕は――'
+  },
+  {
+    title: 'そんなにチョコレートが欲しいなら、くれてやっても良い',
+    href: 'https://www.pixiv.net/novel/show.php?id=27282800',
+    image: chocolate,
+    date: '26.02.14',
+    tags: [
+      '物語的文章',
+    ],
+    description: 'プロデューサーにバレンタインの贈り物をしようとした雨夜燕。<br>しかし、いつもの教室で彼女が目にしたものは――'
+  },
+  {
+    title: '「鬼の面が取れん！」',
+    href: 'https://www.pixiv.net/novel/show.php?id=27180373',
+    image: oni,
+    date: '26.02.02',
+    tags: [
+      '物語的文章',
+    ],
+    description: '節分で、鬼に扮装した雨夜燕。<br>しかし、お面が取れなくなってしまい――'
+  },
+  {
+    title: '「雨夜さん、星を観に行きましょう」',
+    href: 'https://www.pixiv.net/novel/show.php?id=27043993',
+    image: star,
+    date: '26.01.19',
+    series: "大学生時空",
+    series_number: 5,
+    tags: [
+      '物語的文章',
+      '十王星南'
+    ],
+    description: '八ヶ岳へ旅行をする雨夜燕。<br>彼女がそこで星南に告白する、ある重大な事実は――'
+  }
+];
+
+const characterTagCounts = novel_works.reduce((acc, work) => {
+  work.tags.forEach((tag) => {
+    if (tag && tag !== '物語的文章' && tag !== '説明的文章') {
+      acc[tag] = (acc[tag] || 0) + 1;
+    }
+  });
+  return acc;
+}, {} as Record<string, number>);
+
+const sortedCharacterTags = Object.entries(characterTagCounts)
+  .sort((a, b) => b[1] - a[1])
+  .map(([tag]) => tag);
+
+---
+
+<BaseLayout pageTitle='特集：雨夜燕'>
+  <Section heading='Literature'>
+      <p class={css({
+        fontSize: "6xl",
+        alignSelf: 'center',
+      })}>
+        特集：雨夜燕
+      </p>
+      <p class={css({
+        fontSize: "4xl",
+        fontFamily: 'oranienbaum',
+        alignSelf: 'center',
+      })}>
+        <b>T</b>subame <b>A</b>maya
+      </p>
+
+      <Content text='小説シリーズ一覧'>
+        {
+          novel_series.map((work) => (
+            <WorksCard
+              title={work.title}
+              href={work.href}
+              image={work.image}
+              alt_text={work.title}
+              date={work.date}
+              description={work.description}
+            />
+          ))
+        }
+      </Content>
+
+      <Content text='小説作品一覧'>
+        <div class={css({
+          display: "flex",
+          flexDirection: "column",
+          gap: "4",
+          mt: "6",
+          mb: "4",
+          alignItems: "center"
+        })}>
+          <div class={flex({
+            justify: "center",
+            align: "center",
+            gap: "2",
+            flexWrap: "wrap"
+          })}>
+            <span class={css({ fontSize: "sm", fontWeight: "bold", mr: "2" })}>並び順</span>
+            <button
+              type="button"
+              class="sort-btn active"
+              data-sort="date-desc"
+              class:list={css({
+                px: "4",
+                py: "2",
+                borderWidth: "1",
+                borderColor: "#8560fe",
+                borderStyle: "solid",
+                backgroundColor: "#8560fe",
+                fontSize: "sm",
+                cursor: "pointer"
+              })}
+            >
+              投稿日が新しい順
+            </button>
+            <button
+              type="button"
+              class="sort-btn"
+              data-sort="date-asc"
+              class:list={css({
+                px: "4",
+                py: "2",
+                borderWidth: "1",
+                borderColor: "#8560fe",
+                borderStyle: "solid",
+                backgroundColor: "#6c3dd5",
+                fontSize: "sm",
+                cursor: "pointer"
+              })}
+            >
+              投稿日が古い順
+            </button>
+            <button
+              type="button"
+              class="sort-btn"
+              data-sort="series-asc"
+              class:list={css({
+                px: "4",
+                py: "2",
+                borderWidth: "1",
+                borderColor: "#8560fe",
+                borderStyle: "solid",
+                backgroundColor: "#6c3dd5",
+                fontSize: "sm",
+                cursor: "pointer"
+              })}
+            >
+              シリーズ別昇順
+            </button>
+            <button
+              type="button"
+              class="sort-btn"
+              data-sort="series-desc"
+              class:list={css({
+                px: "4",
+                py: "2",
+                borderWidth: "1",
+                borderColor: "#8560fe",
+                borderStyle: "solid",
+                backgroundColor: "#6c3dd5",
+                fontSize: "sm",
+                cursor: "pointer"
+              })}
+            >
+              シリーズ別降順
+            </button>
+          </div>
+
+          <div class={flex({
+            justify: "center",
+            align: "center",
+            gap: "4",
+            flexWrap: "wrap",
+            mt: "2"
+          })}>
+            <span class={css({ fontSize: "sm", fontWeight: "bold" })}>登場人物フィルタ</span>
+            <div class={grid({ columns: 3 })}>
+              {
+                sortedCharacterTags.map((tag) => (
+                  <label class={flex({ align: "center", gap: "1.5", fontSize: "sm", cursor: "pointer" })}>
+                    <input type="checkbox" class="tag-checkbox" value={tag} /> 
+                    <span>{tag}</span>
+                    <span class={css({ color: "white" })}>({characterTagCounts[tag]})</span>
+                  </label>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div
+          id="novel-works-container"
+          class={flex({
+            flexWrap: "wrap",
+            justify: "center",
+            mt: "8",
+            gap: "4"
+          })}
+        >
+          {
+            novel_works.map((work) => (
+              <div
+                class="novel-work-item"
+                data-date={work.date}
+                data-series={work.series ?? ''}
+                data-series-number={work.series_number ?? 999}
+                data-tags={JSON.stringify(work.tags)}
+              >
+                <NovelWorksCard
+                  id={work.title}
+                  title={work.title}
+                  href={work.href}
+                  image={work.image}
+                  alt_text={work.title}
+                  date={work.date}
+                  series={work.series}
+                  tags={work.tags}
+                  description={work.description}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </Content>
+
+      <Content text='批評一覧'>
+        {
+          review_works.map((work) => (
+            <WorksCard
+              title={work.title}
+              href={work.href}
+              image={work.image}
+              alt_text={work.title}
+              date={work.date}
+              tags={work.tags}
+              description={work.description}
+            />
+          ))
+        }
+      </Content>
+  </Section>
+</BaseLayout>
+
+<script>
+  const container = document.getElementById('novel-works-container');
+  const sortButtons = document.querySelectorAll('.sort-btn');
+  const tagCheckboxes = document.querySelectorAll('.tag-checkbox') as NodeListOf<HTMLInputElement>;
+
+  if (container) {
+    const items = Array.from(container.querySelectorAll('.novel-work-item')) as HTMLElement[];
+    let currentSort = 'date-desc';
+
+    const parseDate = (dateStr: string) => {
+      const parts = dateStr.split('.').map((p) => p.trim());
+      if (parts.length === 3) {
+        return new Date(2000 + parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10)).getTime();
+      }
+      return 0;
+    };
+
+    const updateView = () => {
+      const selectedTags = Array.from(tagCheckboxes)
+        .filter((cb) => cb.checked)
+        .map((cb) => cb.value);
+
+      // 1. フィルタリング (表示・非表示)
+      items.forEach((item) => {
+        const tags = JSON.parse(item.dataset.tags || '[]');
+        const matchesTag = selectedTags.length === 0 || selectedTags.every((t) => tags.includes(t));
+        if (matchesTag) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // 2. ソート適用
+      const visibleItems = items.filter((item) => item.style.display !== 'none');
+      visibleItems.sort((a, b) => {
+        const dateA = parseDate(a.dataset.date || '');
+        const dateB = parseDate(b.dataset.date || '');
+        const seriesA = a.dataset.series || '';
+        const seriesB = b.dataset.series || '';
+        const numA = parseInt(a.dataset.seriesNumber || '999', 10);
+        const numB = parseInt(b.dataset.seriesNumber || '999', 10);
+
+        switch (currentSort) {
+          case 'date-desc':
+            return dateB - dateA;
+          case 'date-asc':
+            return dateA - dateB;
+          case 'series-asc':
+            if (seriesA && !seriesB) return -1;
+            if (!seriesA && seriesB) return 1;
+            if (seriesA !== seriesB) return seriesA.localeCompare(seriesB, 'ja');
+            return numA - numB;
+          case 'series-desc':
+            if (seriesA && !seriesB) return -1;
+            if (!seriesA && seriesB) return 1;
+            if (seriesA !== seriesB) return seriesB.localeCompare(seriesA, 'ja');
+            return numB - numA;
+          default:
+            return 0;
+        }
+      });
+
+      visibleItems.forEach((item) => container.appendChild(item));
+    };
+
+    sortButtons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        sortButtons.forEach((b) => {
+          b.style.backgroundColor = '#6c3dd5';
+          b.classList.remove('active');
+        });
+        target.style.backgroundColor = '#8560fe';
+        target.classList.add('active');
+        currentSort = target.dataset.sort || 'date-desc';
+        updateView();
+      });
+    });
+
+    tagCheckboxes.forEach((cb) => {
+      cb.addEventListener('change', () => {
+        updateView();
+      });
+    });
+  }
+</script>

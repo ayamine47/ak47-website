@@ -1,0 +1,219 @@
+---
+import '../../styles/global.css';
+import { css } from '../../../styled-system/css';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import Content from '../../components/Content.astro';
+import Section from '../../components/Section.astro';
+import WorksCard from '../../components/WorksCard.astro';
+
+import yukkuri from '../../assets/blog/yukkuri/ocean.webp';
+import anima from '../../assets/katsuki/anima.webp';
+import dummy from '../../assets/dummy.png';
+import hermeneutics from '../../assets/katsuki/hermeneutics.png';
+import lilja from '../../assets/katsuki/lilja.jpg';
+import jasmine from '../../assets/katsuki/jasmine.jpg';
+import semantics from '../../assets/katsuki/semantics.png';
+import sumika_date from '../../assets/katsuki/sumika_date.jpg';
+
+interface WorkMetaData {
+  title: string;
+  href: string;
+  image: ImageMetadata;
+  date: string;
+  tags: string[];
+  description: string;
+}
+
+const works: WorkMetaData[] = [
+  // template
+  /*
+  {
+    title: '',
+    href: '',
+    image: ,
+    date: '',
+    tags: [
+      ''
+    ],
+    description: ''
+  },
+  */
+  {
+    title: '批評：きりのはのべる『なついろにっき。』',
+    href: '/blog/review-natsuiro',
+    image: dummy,
+    date: '26.09.02',
+    tags: [
+      '説明的文章',
+      '批評'
+    ],
+    description: 'きりのはのべるが発売した同人ゲーム『なついろにっき。』についての批評。\n今季最低のゲームです。'
+  },
+  {
+    title: '書評：フリスク『ゆっくりまわっているようだ』',
+    href: '/blog/review-yukkuri',
+    image: yukkuri,
+    date: '26.08.16',
+    tags: [
+      '説明的文章',
+      '批評',
+      '学マス'
+    ],
+    description: 'フリスク氏の執筆された『ゆっくりまわっているようだ』についての書評。\nユング、ウィトゲンシュタイン、ライプニッツなどを中心に。'
+  },
+  {
+    title: 'リーリヤ「センパイ、一緒に映画を観たい、です……！」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28680983',
+    image: lilja,
+    date: '26.07.24',
+    tags: [
+      '物語的文章',
+      '学マス',
+      '葛城リーリヤ'
+    ],
+    description: 'センパイを映画に誘うリーリヤ。\nところが、事態は思わぬ方向へ向かって行く――'
+  },
+  {
+    title: '清夏「P っち、デートしよ！」',
+    href: 'https://www.pixiv.net/novel/show.php?id=28278890',
+    image: sumika_date,
+    date: '26.06.07',
+    tags: [
+      '物語的文章',
+      '学マス',
+      '紫雲清夏'
+    ],
+    description: 'プロデューサーは、紫雲清夏とデートをする。\n素直になり切れない二人の、甘酸っぱい物語が辿る結末とは――'
+  },
+  {
+    title: '配信と背信、穢れし茉莉花《ジャスミン》',
+    href: 'https://www.pixiv.net/novel/show.php?id=28184789',
+    image: jasmine,
+    date: '26.05.27',
+    tags: [
+      '物語的文章',
+      '学マス',
+      '姫崎莉波'
+    ],
+    description: 'ある炎上事件に巻き込まれてしまった姫崎莉波。\n彼女のプロデューサーは、誰もいない茶室で、何を語るのか――'
+  },
+  {
+    title: '美少女ゲームというテクストの意義―アニマの知覚―',
+    href: 'https://kuvnlovers.hatenablog.com/entry/bishojo-game-anima',
+    image: anima,
+    date: '26.04.07',
+    tags: [
+      '説明的文章',
+      '現代視覚文化論',
+      '京大美少女ゲーム同好会'
+    ],
+    description: '美少女ゲームのもつ意義について、ユング心理学の観点から解説する。'
+  },
+  {
+    title: '美少女ゲーム解釈学入門',
+    href: 'https://kuvnlovers.hatenablog.com/entry/bishojo-game-semantics',
+    image: hermeneutics,
+    date: '26.04.04',
+    tags: [
+      '説明的文章',
+      '現代視覚文化論',
+      '京大美少女ゲーム同好会'
+    ],
+    description: '美少女ゲームを " 解釈 " する行為について解説する。'
+  },
+  {
+    title: '美少女ゲームという言葉を再定義する',
+    href: 'https://kuvnlovers.hatenablog.com/entry/bishojo-game-semantics',
+    image: semantics,
+    date: '26.03.30',
+    tags: [
+      '説明的文章',
+      '現代視覚文化論',
+      '京大美少女ゲーム同好会'
+    ],
+    description: '美少女ゲームという言葉について、定義を再検討する。'
+  },
+];
+
+---
+
+<BaseLayout pageTitle='紅坂篤樹'>
+  <Section heading='Literature'>
+      <p class={css({
+        fontSize: "6xl",
+        alignSelf: 'center',
+      })}>
+        紅坂篤樹
+      </p>
+      <p class={css({
+        fontSize: "4xl",
+        fontFamily: 'oranienbaum',
+        alignSelf: 'center',
+      })}>
+        <b>A</b>tsuki <b>K</b>osaka
+      </p>
+
+      <Content text='執筆するもの'>
+        <div class={css({ fontSize: "md" })}>
+          <div class={css({ pl: '8' })}>
+            <li>説明的文章</li>
+            <div class={css({ pl: '8' })}>
+              <li>現代視覚文化論</li>
+            </div>
+            <li>物語的文章</li>
+            <div class={css({ pl: '8' })}>
+              <li>一次創作</li>
+              <div class={css({ pl: '8' })}>
+                <li>小説</li>
+                <li>戯曲</li>
+              </div>
+              <li>二次創作 (小説)</li>
+              <div class={css({ pl: '8' })}>
+                <li>雨夜燕</li>
+                <li>ダンガンロンパ</li>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Content>
+
+      <Content text='特設ページ一覧'>
+        <!-- <WorksCard
+          title="『ドクス―不連続存在―』"
+          href="/katsuki/dox"
+          image={dummy}
+          alt_text=""
+          date=""
+          tags={[ "物語的文章", "一次創作" ]}
+          description="突然、“ ドクスギア ” を送りつけられたジャーナリスト・朝川七桜。\n世間を騒がせている怪人や、親友の失踪の真実に迫る、“ ダークヒーロー ” 小説！"
+        /> -->
+        <WorksCard
+          title="特集：雨夜燕"
+          href="/katsuki/tsubame"
+          image={dummy}
+          alt_text=""
+          date=""
+          tags={[ "二次創作", "学マス", "雨夜燕" ]}
+          description="雨夜燕や彼女の P を中心とする作品一覧。"
+        />
+      </Content>
+
+      <Content text='その他執筆物一覧'>
+        {
+          works.map((work) => (
+            <WorksCard
+              title={work.title}
+              href={work.href}
+              image={work.image}
+              alt_text={work.title}
+              date={work.date}
+              tags={work.tags}
+              description={work.description}
+            />
+          ))
+        }
+      </Content>
+  </Section>
+</BaseLayout>

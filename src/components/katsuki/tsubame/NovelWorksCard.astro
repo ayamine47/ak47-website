@@ -1,0 +1,185 @@
+---
+import { Image } from 'astro:assets';
+import { css } from '../../../../styled-system/css';
+import { flex } from '../../../../styled-system/patterns';
+
+interface Props {
+    id: string;
+    href: string;
+    image?: ImageMetadata;
+    alt_text: string;
+    title: string;
+    description: string;
+    date: string;
+    series?: string;
+    tags: string[];
+}
+
+const { id, href, image, alt_text, title, description, date, series, tags } = Astro.props;
+---
+
+<button data-open-btn={id} class={flex({
+    position: "relative",
+    cursor: "pointer",
+    direction: "column",
+    justify: "space-between",
+    align: "center",
+    w: "32",
+    h: "56",
+    border: "1",
+    borderColor: "#8560fe",
+    borderStyle: "solid",
+    bg: "white"
+})}>
+    <div class={css({ position: "relative" })}>
+        {
+            series &&
+            <p class={flex({
+                position: "absolute",
+                left: "0",
+                top: "0",
+                w: "12",
+                h: "12",
+                pl: "2",
+                bg: "#6c3dd5",
+                clipPath: "polygon(0 0, 100% 0, 0 100%)"
+            })}>
+                {series[0]}
+            </p>
+        }
+        {
+            image &&
+            <Image src={image} alt={alt_text} />
+        }
+    </div>
+    <a href={href} class={flex({
+        bg: "#6c3dd5",
+        w: "full",
+        h: "full",
+        justify: "center",
+        align: "center",
+        color: "#72b6e3",
+        fontSize: "xl",
+    })}>
+        読む
+    </a>
+</button>
+
+<dialog data-popup={id} class={css({
+    bg: "transparent",
+    w: "full",
+    h: "full",
+    maxW: "none",
+    maxH: "none"
+})}>
+    <div class={flex({
+        justify: "center",
+        align: "center",
+        bg: "black/50",
+        color: "white",
+        w: "full",
+        h: "full"
+    })}>
+        <div class={flex({
+            direction: { base: "column", md: "row" },
+            align: "center",
+            position: "relative",
+            bg: "zinc.900",
+            w: { base: "full", md: "50%" },
+            minW: { base: "360px", md: "720px" },
+            h: "80",
+            p: "8",
+            gap: "4",
+            border: "4",
+            borderColor: "#8560fe",
+            borderStyle: "solid"
+        })}>
+            <div class={flex({ direction: "column", gap: "4" })}>
+                {
+                    series &&
+                    <p class={flex({
+                        justify: "center",
+                        bg: "#6c3dd5",
+                        px: "4",
+                        py: "2"
+                    })}>
+                        {series}
+                    </p>
+                }
+                <div class={css({ w: "32" })}>
+                    {
+                        image &&
+                        <Image src={image} alt={alt_text} width={427} height={600} />
+                    }
+                </div>
+            </div>
+            <div class={flex({ direction: "column", align: "start", gap: "4" })}>
+                <p class={css({ color: "zinc.400", fontFamily: 'oranienbaum' })} >{date}</p>
+                <p class={css({ fontSize: "xl" })}>{title}</p>
+                <p set:html={description} />
+                <div class={flex({ align: "center", gap: "4" })}>
+                    <a href={href} class={css({
+                        bg: "#6c3dd5",
+                        px: "4",
+                        py: "2",
+                        color: "#72b6e3",
+                        fontSize: "xl",
+                    })}>
+                        読む
+                    </a>
+                    {
+                        tags.map((tag) => (
+                        <p class={css({
+                            p: "2",
+                            border: '1',
+                            borderStyle: 'solid',
+                            borderColor: '#72b6e3',
+                            fontSize: "sm",
+                        })}>
+                            #{tag}
+                        </p>
+                        ))
+                    }
+                </div>
+            </div>
+            <button 
+                data-close-btn={id}
+                class={css({
+                    position: "absolute",
+                    top: "4",
+                    right: "4",
+                    px: "4",
+                    py: "2",
+                    bg: "#6c3dd5",
+                    cursor: "pointer" })}
+            >
+                閉じる
+            </button>
+        </div>
+    </div>
+</dialog>
+
+<script>
+    const openButtons = document.querySelectorAll('[data-open-btn]');
+
+    openButtons.forEach((openBtn) => {
+        openBtn.addEventListener('click', () => {
+            const id = (openBtn as HTMLElement).dataset.openBtn;
+            
+            const popup = document.querySelector(`dialog[data-popup="${id}"]`) as HTMLDialogElement;
+            const closeBtn = document.querySelector(`[data-close-btn="${id}"]`);
+
+            if (popup) {
+                popup.showModal();
+
+                const handleClose = () => {
+                    popup.close();
+                    closeBtn?.removeEventListener('click', handleClose);
+                };
+
+                closeBtn?.removeEventListener('click', handleClose);
+                closeBtn?.addEventListener('click', handleClose, { once: true });
+            }
+        });
+    });
+</script>

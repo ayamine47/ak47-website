@@ -11,10 +11,10 @@ interface Props {
 const { text } = Astro.props;
 ---
 
-<div class={css({
-  width: 'full',
+<section class={css({
+  w: 'full',
   my: '4',
 })}>
   <ContentHeading text={text} />
   <slot />
-</div>
+</section>

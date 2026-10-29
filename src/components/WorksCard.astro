@@ -8,21 +8,20 @@ import { flex, hstack, vstack } from '../../styled-system/patterns';
 interface Props {
   title: string;
   href: string;
-  withImage?: boolean;
   image?: ImageMetadata;
   alt_text: string;
   date: string;
-  tags: string[];
+  tags?: string[];
   description: string;
 }
 
-const { title, href, withImage, image, alt_text, date, tags, description } = Astro.props;
+const { title, href, image, alt_text, date, tags, description } = Astro.props;
 ---
 
 <div class={css({ m: '4' })}>
   <a href={href}>
     <div class={flex({
-      w: '100%',
+      w: 'full',
       minH: '180',
       maxH: '240',
       p: '1',
@@ -58,7 +57,7 @@ const { title, href, withImage, image, alt_text, date, tags, description } = Ast
         </p>
         <div class={hstack({ gap: '2', my: '2' })}>
           {
-            tags.map((tag) => (
+            tags && tags.map((tag) => (
               <button class={css({
                 p: '1',
                 border: '1',
