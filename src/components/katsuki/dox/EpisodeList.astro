@@ -1,0 +1,35 @@
+---
+import { css } from "../../../../styled-system/css";
+import { gridItem } from "../../../../styled-system/patterns";
+
+interface Props {
+    first?: any;
+    date: string;
+    ep_num: string;
+}
+
+const { first, date, ep_num } = Astro.props;
+
+---
+
+<a href=`/katsuki/dox/ep/${ep_num.padStart(2, "0")}` class={gridItem({
+    colSpan: (first) && 2,
+    rowSpan: (first) && 2,
+})}>
+    <div class={css({
+        h: 'full',
+        border: '4',
+        borderColor: '#00C0FB',
+        borderStyle: 'solid',
+    })}>
+        <div class={css({
+            bg: 'white',
+            h: (first) ? 64 : 24
+        })}>
+        </div>
+        <div class={css({ px: "4", py: "2" })}>
+            <p class={css({ fontSize: "xs" })}>{date}</p>
+            <p class={css({})}>第 {ep_num} 話</p>
+        </div>
+    </div>
+</a>

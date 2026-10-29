@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+
+import '../../../styles/global.css';
+import { css } from '../../../../styled-system/css';
+
+import twitter from '../../../assets/twitter.svg';
+import pixiv from '../../../assets/pixiv.png';
+import github from '../../../assets/github.png';
+
+interface Props {
+    hrefs: { name: string; target: string }[];
+}
+const { hrefs } = Astro.props;
+---
+
+<header class={css({
+  bg: '#6c3dd5',
+  display: 'flex',
+  justifyContent: 'space-between',
+  width: 'full',
+  zIndex: 9999,
+  py: '2',
+  m: '0',
+  color: '#72b6e3',
+  borderBottom: '4',
+  borderBottomColor: '#72b6e3',
+  borderBottomStyle: 'solid',
+  fontFamily: 'oranienbaum'
+})}>
+  <div class={css({
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: "md",
+    gap: '4'
+  })}>
+    <a href="/" class={css({
+      fontSize: "4xl",
+      ml: '4'
+    })}>
+      AK47
+    </a>
+    {
+      hrefs.map(({ name, target }) => (
+        <a href={target} class={css({ fontSize: 'xl' })}>{name}</a>
+      ))
+    }
+  </div>
+
+  <div class={css({
+    display: 'flex',
+    px: '4',
+    alignItems: 'center',
+    gap: '4'
+  })}>
+    <a href="https://twitter.com/ak47_work">
+      <Image src={twitter} alt="Twitter" class={css({
+        w: '4',
+        h: '4',
+        _hover: {
+          opacity: '60'
+        }
+      })} />
+    </a>
+    <a href="https://www.pixiv.net/users/105353694">
+      <Image src={pixiv} alt="Pixiv" class={css({
+        w: '4',
+        h: '4',
+        _hover: {
+          opacity: '60'
+        }
+      })} />
+    </a>
+    <a href="https://github.com/ayamine47">
+      <Image src={github} alt="Twitter" class={css({
+        w: '4',
+        h: '4',
+        _hover: {
+          opacity: '60'
+        }
+      })} />
+    </a>
+  </div>
+</header>
