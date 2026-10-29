@@ -10,6 +10,7 @@ import Section from '../../components/Section.astro';
 import WorksCard from '../../components/WorksCard.astro';
 
 import chocolate from '../../assets/katsuki/chocolate.jpg';
+import cry_and_night from '../../assets/kazusa/cry_and_night.png';
 import daigakusei from '../../assets/katsuki/daigakusei.jpg';
 import devil from '../../assets/katsuki/devil.jpg';
 import dokuhaku from '../../assets/katsuki/dokuhaku.jpg';
@@ -26,9 +27,11 @@ import nuku from '../../assets/katsuki/nuku.jpg';
 import oni from '../../assets/katsuki/oni.jpg';
 import pad from '../../assets/katsuki/pad.jpg';
 import pr1de from '../../assets/katsuki/pr1de.jpg';
+import schwarze_schwalbe from '../../assets/katsuki/schwarze_schwalbe.png';
 import sekigahara from '../../assets/katsuki/sekigahara.jpg';
 import shitai from '../../assets/katsuki/shitai.jpg';
 import shitaiume from '../../assets/katsuki/shitaiume.jpg';
+import sign from '../../assets/katsuki/sign.jpg';
 import sleep from '../../assets/katsuki/sleep.jpg';
 import smartphone from '../../assets/katsuki/smartphone.jpg';
 import star from '../../assets/katsuki/star.jpg';
@@ -49,6 +52,40 @@ interface WorkMetaData {
   tags: string[];
   description: string;
 }
+
+const products: WorkMetaData[] = [
+  {
+    title: 'Cry & Night（700 JPY）',
+    href: 'https://anima-kristall.booth.pm/items/8940742',
+    image: cry_and_night,
+    date: '26.09.20',
+    tags: [
+      '歌姫庭園 44',
+      'はつぼしがくえんさい 1'
+    ],
+    description: '雨夜燕コンセプチュアル EP\nEP 本体に加え、ハイレゾ音源 (96 kHz / 24 bit) と楽曲コミュ (約 3 万字) つき！'
+  },
+  {
+    title: 'Schwarze Schwalbe（1,000 JPY）',
+    href: 'https://anima-kristall.booth.pm/items/8440593',
+    image: schwarze_schwalbe,
+    date: '26.05.31',
+    tags: [
+      '歌姫庭園 43',
+    ],
+    description: '雨夜燕二次創作小説まとめ本\n初期作品の脚注コメンタリーやコラム、死体時空の完結篇となる書き下ろし小説『標』つき！'
+  },
+  {
+    title: '標（200 JPY）',
+    href: 'https://anima-kristall.booth.pm/items/8440701',
+    image: sign,
+    date: '26.05.31',
+    tags: [
+      '歌姫庭園 43',
+    ],
+    description: '『Schwarze Schwalbe』書き下ろし作品単品\n冬の H.I.F. で優勝した雨夜燕が、壇上で語ることとは――'
+  },
+];
 
 const novel_series: WorkMetaData[]= [
   // template
@@ -453,6 +490,22 @@ const sortedCharacterTags = Object.entries(characterTagCounts)
         <b>T</b>subame <b>A</b>maya
       </p>
 
+      <Content text='頒布物一覧'>
+        {
+          products.map((work) => (
+            <WorksCard
+              title={work.title}
+              href={work.href}
+              image={work.image}
+              alt_text={work.title}
+              date={work.date}
+              description={work.description}
+            />
+          ))
+        }
+      </Content>
+
+
       <Content text='小説シリーズ一覧'>
         {
           novel_series.map((work) => (
@@ -477,18 +530,19 @@ const sortedCharacterTags = Object.entries(characterTagCounts)
           mb: "4",
           alignItems: "center"
         })}>
+          <span class={css({ fontSize: "sm", fontWeight: "bold" })}>並び順</span>
           <div class={flex({
             justify: "center",
             align: "center",
             gap: "2",
             flexWrap: "wrap"
           })}>
-            <span class={css({ fontSize: "sm", fontWeight: "bold", mr: "2" })}>並び順</span>
             <button
               type="button"
               class="sort-btn active"
               data-sort="date-desc"
               class:list={css({
+                w: "40%",
                 px: "4",
                 py: "2",
                 borderWidth: "1",
@@ -506,6 +560,7 @@ const sortedCharacterTags = Object.entries(characterTagCounts)
               class="sort-btn"
               data-sort="date-asc"
               class:list={css({
+                w: "40%",
                 px: "4",
                 py: "2",
                 borderWidth: "1",
@@ -523,6 +578,7 @@ const sortedCharacterTags = Object.entries(characterTagCounts)
               class="sort-btn"
               data-sort="series-asc"
               class:list={css({
+                w: "40%",
                 px: "4",
                 py: "2",
                 borderWidth: "1",
@@ -540,6 +596,7 @@ const sortedCharacterTags = Object.entries(characterTagCounts)
               class="sort-btn"
               data-sort="series-desc"
               class:list={css({
+                w: "40%",
                 px: "4",
                 py: "2",
                 borderWidth: "1",
@@ -565,7 +622,7 @@ const sortedCharacterTags = Object.entries(characterTagCounts)
             <div class={grid({ columns: 3 })}>
               {
                 sortedCharacterTags.map((tag) => (
-                  <label class={flex({ align: "center", gap: "1.5", fontSize: "sm", cursor: "pointer" })}>
+                  <label class={flex({ align: "center", gap: "1.5", fontSize: { base: "xs", md: "sm" }, cursor: "pointer" })}>
                     <input type="checkbox" class="tag-checkbox" value={tag} /> 
                     <span>{tag}</span>
                     <span class={css({ color: "white" })}>({characterTagCounts[tag]})</span>
