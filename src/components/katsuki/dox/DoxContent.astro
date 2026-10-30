@@ -1,0 +1,40 @@
+---
+import '../../../styles/global.css';
+import { css } from '../../../../styled-system/css';
+import { vstack } from '../../../../styled-system/patterns';
+
+interface Props {
+    text_ja: string;
+    text_en: string;
+    border?: boolean;
+}
+
+const { text_ja, text_en, border } = Astro.props;
+---
+
+<section class={vstack({
+    justify: "center",
+    position: 'relative',
+    w: 'full',
+    my: '4',
+    pb: '16',
+    borderBottom: border && "4",
+    borderBottomColor: border && "#00C0FB",
+    borderBottomStyle: border && "solid"
+})}>
+    <p class={css({
+        fontSize: "5xl",
+        textAlign: "center",
+        textShadow: "0 4px 8px #00C0FB",
+    })}>
+        {text_en}
+    </p>
+    <b class={css({
+        fontSize: "xl",
+        textAlign: "center",
+        textShadow: "0 4px 8px #00C0FB",
+    })}>
+        {text_ja}
+    </b>
+    <slot />
+</section>

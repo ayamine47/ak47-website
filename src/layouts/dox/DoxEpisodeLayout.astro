@@ -1,0 +1,143 @@
+---
+import { Image } from "astro:assets";
+import { ChevronLeft, ChevronRight } from "@lucide/astro";
+
+import { css } from "../../../styled-system/css";
+import { flex, grid, gridItem, hstack, vstack } from "../../../styled-system/patterns";
+
+import DoxLayout from "./DoxLayout.astro";
+
+import kakuyomu from '../../assets/katsuki/kakuyomu.png';
+import pixiv from '../../assets/pixiv.png';
+
+interface Props {
+  prev_ep?: string;
+  next_ep?: string;
+  ep_num: string;
+  date: string;
+  writer: string;
+  kakuyomu_link?: string;
+  pixiv_link?: string;
+  description: string;
+  guest_name?: string;
+  guest_ruby?: string;
+  guest_description?: string;
+  pov: string;
+  reflection?: string;
+}
+
+const { prev_ep, next_ep, ep_num, date, writer, kakuyomu_link, pixiv_link, description , guest_name, guest_ruby, guest_description, pov, reflection } = Astro.props;
+---
+<DoxLayout pageTitle={ep_num}>
+    <div class={vstack()}>
+        <div class={grid({
+            columns: 2,
+            mb: "8",
+            gap: "8"
+        })}>
+            {
+                next_ep ?
+                    <a href={`/katsuki/dox/ep/${next_ep}`}
+                    class={hstack({
+                        p: "2",
+                        gap: "2",
+                        border: "1",
+                        borderColor: "white",
+                        borderStyle: "solid",
+                        fontSize: "sm",
+                        _hover: {
+                            color: "#00C0FB",
+                            borderColor: "#00C0FB",
+                        }
+                    })}>
+                        <ChevronLeft size={16} />
+                        次の話
+                    </a>
+                : <div class={gridItem({ p: "2" })} />
+            }
+            {
+                prev_ep ?
+                    <a href={`/katsuki/dox/ep/${prev_ep}`}
+                    class={hstack({
+                        p: "2",
+                        gap: "2",
+                        border: "1",
+                        borderColor: "white",
+                        borderStyle: "solid",
+                        fontSize: "sm",
+                        _hover: {
+                            color: "#00C0FB",
+                            borderColor: "#00C0FB",
+                        }
+                    })}>
+                        前の話
+                        <ChevronRight size={16} />
+                    </a>
+                : <div class={gridItem({ p: "2" })} />
+            }
+        </div>
+        <p class={css({ mb: "8" })}>{date} 公開</p>
+        <h1 class={css({ mb: "4", fontSize: "4xl", fontWeight: "bold" })}>{ep_num}</h1>
+        <p class={css({ mb: "16" })}>脚本：{writer}</p>
+        {
+            (kakuyomu_link && pixiv_link) &&
+            <div class={grid({
+                columns: 2,
+                mb: "16",
+                gap: "16"
+            })}>
+                <a href={`https://kakuyomu.jp/works/11054822662395211428/episodes/${kakuyomu_link}`}>
+                    <Image src={kakuyomu} alt="カクヨム作品 URL" class={css({
+                        w: '8',
+                        h: '8'
+                    })} />
+                </a>
+                <a href={`https://www.pixiv.net/novel/show.php?id=${pixiv_link}`}>
+                    <Image src={pixiv} alt="Pixiv 作品 URL" class={css({
+                        w: '8',
+                        h: '8'
+                    })} />
+                </a>
+            </div>
+        }
+        <div
+            class={css({
+                w: { base: "full", md: "50%" },
+                mb: "32",
+                px: "4"
+        })}>
+            <p set:html={description} />
+        </div>
+        {
+            (guest_name && guest_ruby && guest_description) &&
+            <div
+                class={css({
+                    w: { base: "full", md: "50%" },
+                    mb: "32"
+            })}>
+                <div class={flex({ justify: "center", py: "4", bg: "#00C0FB", borderY: "4", borderYColor: "#FFFF4D", borderStyle: "solid" })}>
+                    <h2 class={css({ fontSize: "3xl", fontWeight: "bold" })}>ゲスト</h2>
+                </div>
+                <div class={css({ mt: "16", px: "4" })}>
+                    <div class={css({ mb: "4" })}>
+                        <p class={css({ fontSize: "xs" })}>{guest_ruby}</p>
+                        <p class={css({ fontSize: "2xl" })}>{guest_name}</p>
+                    </div>
+                    <p set:html={guest_description} />
+                </div>
+            </div>
+        }
+        <div
+            class={css({
+                w: { base: "full", md: "50%" },
+                mb: "32"
+        })}>
+            <div class={flex({ justify: "center", py: "4", bg: "#00C0FB", borderY: "4", borderYColor: "#FFFF4D", borderStyle: "solid" })}>
+                <h2 class={css({ fontSize: "3xl", fontWeight: "bold" })}>次回のみどころ</h2>
+            </div>
+            <div class={css({ mt: "16", px: "4" })}>
+                <p set:html={pov} />
+            </div>
+        </div>
+    </div>
+</DoxLayout>

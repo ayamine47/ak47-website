@@ -1,0 +1,218 @@
+---
+import { Image } from 'astro:assets';
+
+import '../../../styles/global.css';
+
+import { css } from '../../../../styled-system/css';
+import { center, flex, grid, vstack } from '../../../../styled-system/patterns';
+
+import DoxContent from '../../../components/katsuki/dox/DoxContent.astro';
+import CharacterCard from '../../../components/katsuki/dox/CharacterCard.astro';
+import EpisodeList from '../../../components/katsuki/dox/EpisodeList.astro';
+
+import DoxLayout from '../../../layouts/dox/DoxLayout.astro';
+
+import kakuyomu from '../../../assets/katsuki/kakuyomu.png';
+import pixiv from '../../../assets/pixiv.png';
+---
+
+<DoxLayout pageTitle='Top'>
+    <div class={vstack({
+        w: 'full'
+    })}>
+        <DoxContent text_ja="各話一覧" text_en="EPISODE LIST" border={true}>
+            <div class={flex({ w: "full", justify: "center", mt: "8" })}>
+                <div class={grid({
+                    columns: { base: 2, md: 4 },
+                    gridRow: 2,
+                    w: { base: 'full', md: '48rem' },
+                    px: { base: "4", md: "0" },
+                    gap: '4'
+                })}>
+                    <EpisodeList
+                        date='2026 年 11 月 01 日'
+                        ep_num='5'
+                        first={true}
+                    />
+                    <EpisodeList
+                        date='2026 年 10 月 25 日'
+                        ep_num='4'
+                    />
+                    <EpisodeList
+                        date='2026 年 10 月 18 日'
+                        ep_num='3'
+                    />
+                    <EpisodeList
+                        date='2026 年 10 月 11 日'
+                        ep_num='2'
+                    />
+                    <EpisodeList
+                        date='2026 年 10 月 04 日'
+                        ep_num='1'
+                    />
+                </div>
+            </div>
+        </Content>
+
+        <DoxContent text_ja="作品概要" text_en="INTRODUCTION" border={true}>
+            <div class={vstack({ columnGap: '16', fontSize: { base: "md", md: 'xl' }, textAlign: "center", mt: "8", px: "4", gap: "4" })}>
+                <p>ジャーナリスト・<b>朝川七桜</b>の許に、<br class={css({ display: { base: "block", md: "none" } })}>科学技術研究企業・ネーベル社が開発した、<br>対未確認超人類生命体強化装備・“ <b class={css({ color: "#00C0FB" })}>ドクス</b>ギア ” <br class={css({ display: { base: "block", md: "none" } })}>が届いた。</p>
+                <p>曰く、<b class={css({ color: "#00C0FB" })}>ドクス</b>に「変身」して、<br class={css({ display: { base: "block", md: "none" } })}>怪人を倒せというのである。</p>
+                <p><b class={css({ color: "#00C0FB" })}>ドクス</b>ギアに対して、<br class={css({ display: { base: "block", md: "none" } })}>最初は半信半疑だった<b>七桜</b>であったが、<br>松本で運悪くその怪人と出くわしてしまう。</p>
+                <p>そう、彼女は、<br class={css({ display: { base: "block", md: "none" } })}>世間を騒がせる不可解な連続殺人事件の真相と、<br>失踪した同業者にして<br class={css({ display: { base: "block", md: "none" } })}>親友・<b>九十九美梅</b>の行方を追って、<br>長野県は松本へ出向いていたのである。</p>
+                <p>かくして、彼女は一か八か、<br class={css({ display: { base: "block", md: "none" } })}><b class={css({ color: "#00C0FB" })}>ドクス</b>に「変身」することを試みるが……。</p>
+            </div>
+        </Content>
+
+        <DoxContent text_ja="登場人物" text_en="CHARACTERS" border={true}>
+            <div class={center({ mt: "8", px: "2" })}>
+                <div class={flex({
+                    flexWrap: "wrap",
+                    w: { base: "full", md: "50%" },
+                    gap: { base: "2", md: "4" }
+                })}>
+                    <CharacterCard
+                        id="kazushi",
+                        hero_bg_color='#00C0FB'
+                        hero_name='ドクス'
+                        name='松涛一汐'
+                        name_roman='KAZUSHI MATSUNAMI'
+                        name_ruby='まつなみ・かずし'
+                        birth='2007.09.15 08:16（19 歳）'
+                        description='
+                            松本で蕎麦屋の日雇いバイトをしていた元浪人。
+                            ひょんなことから<b>七桜</b>と出会い、
+                            彼女によってドクスに変身させられる。
+                            それから、武蔵小金井にある彼女の家に住まい、
+                            怪人を倒す用心棒をすることに……。
+                        '
+                    />
+                    <CharacterCard
+                        id="nanao",
+                        name='朝川七桜'
+                        name_roman='NANAO ASAKAWA'
+                        name_ruby='あさかわ・ななお'
+                        birth='2001.09.22 08:03（25 歳）'
+                        description='
+                            武蔵小金井在住、新宿勤めのジャーナリスト。
+                            連続殺人事件と<b>美梅</b>の失踪を追って松本を訪れた際、
+                            怪人に襲われ、<b>一汐</b>をドクスに変身させる。
+                            その後、彼を家に迎え入れ、
+                            彼と共に二つの事件の真相を追うことに……。
+                        '
+                    />
+                    <CharacterCard
+                        id="chidori",
+                        name='酉島千鳥'
+                        name_roman='CHIDORI TORISHIMA'
+                        name_ruby='とりしま・ちどり'
+                        birth='1999.12.18（26 歳）'
+                        description='
+                            <b>七桜</b>家近くのラーメン屋『福』ではたらくフリーター。
+                            <b>一汐</b>と馬が合うため、店を訪れた彼と懇ろにしている。
+                            また、失踪した高校時代の彼女・<b>零南</b>を捜している。
+                            しかし、<b>茜</b>や<b>歩霧</b>と密談するなど、
+                            どうやら彼には、裏の顔があるようで……？
+                        '
+                    />
+                    <CharacterCard
+                        id="akane",
+                        name='佐竹 茜'
+                        name_roman='AKANE SATAKE'
+                        name_ruby='さたけ・あかね'
+                        birth='39 歳'
+                        description='
+                            <b>七桜</b>家近くのカフェアンドバー『和合』の店長。
+                            普段は<b>一汐</b>たちを冗談めかして煙に巻く、
+                            サディスティックでナルシストなお姉さん。
+                            しかし、ネーベル社の闇について何か知っているほか、
+                            仮面を纏ったもう一つの姿をもっているようで……？
+                        '
+                    />
+                    <CharacterCard
+                        id="miume",
+                        name='九十九美梅'
+                        name_roman='MIUME TSUKUMO'
+                        name_ruby='つくも・みうめ'
+                        birth='25 歳'
+                        description='
+                            <b>七桜</b>の親友で、同じくジャーナリスト。
+                            彼女と共に、不可解な連続殺人事件を追っていた。
+                            ところが、松本の実家に帰省したっきり、音信不通に。
+                            彼女の行方にかんする真実が、
+                            <b>七桜</b>たちの運命の鍵を握っているようだ……。
+                        '
+                    />
+                    <CharacterCard
+                        id="reina",
+                        name='八雲零南'
+                        name_roman='REINA YAKUMO'
+                        name_ruby='やくも・れいな'
+                        birth='1999.07.09（27 歳）'
+                        description='
+                            <b>千鳥</b>の高校の同級生にして、元彼女。
+                            しかし、卒業式を待たずして、突如失踪してしまった。
+                            それ以来、8 年ものあいだ行方不明となっている、
+                            「もう一人の失踪者」。
+                            彼女は一体、どこにいて、何をしているのか……？
+                        '
+                    />
+                    <CharacterCard
+                        id="ayumu",
+                        name='五条歩霧'
+                        name_roman='AYUMU GOJO'
+                        name_ruby='ごじょう・あゆむ'
+                        birth='？？歳'
+                        description='
+                            巨大な科学技術研究企業『ネーベル社』の社長。
+                            <b>七桜</b>の許へドクスギアを送りつけた張本人。
+                            彼女たちの動向を、社長室から見下ろしている。
+                            なぜ彼は、ドクスギアを送ってきたのか？
+                            また、何かを企んでいるようだが、その内容とは……？
+                        '
+                    />
+                    <CharacterCard
+                        id="kanako",
+                        name='長谷川叶湖'
+                        name_roman='KANAKO HASEGAWA'
+                        name_ruby='はせがわ・かなこ'
+                        birth='36 歳'
+                        description='
+                            <b>七桜</b>の上司にして、雑誌の若き編集長。
+                            謹厳実直で、口調も男勝りな、堅物のシゴデキ。
+                            徹底した実力主義を敷き、ストイックに成果を求める。
+                            <b>七桜</b>が入社した際、彼女の才能を見抜き、
+                            直属の部下として、3 年のあいだ育て続けている。
+                        '
+                    />
+                </div>
+            </div>
+        </Content>
+
+        <DoxContent text_ja="公開" text_en="PUBLICATION">
+            <div class={vstack({ fontSize: "2xl", mt: "8" })}>
+                <p class={css({
+                    borderBottom: "1",
+                    borderBottomColor: "#00C0FB",
+                    borderBottomStyle: "solid"
+                })}>
+                    毎週日曜あさ 10:00
+                </p>
+                <div class={flex({ w: "48", justify: "space-evenly", pt: "4" })}>
+                        <a href="https://kakuyomu.jp/works/11054822662395211428">
+                            <Image src={kakuyomu} alt="カクヨム作品 URL" class={css({
+                                w: '8',
+                                h: '8'
+                            })} />
+                        </a>
+                        <a href="https://www.pixiv.net/novel/series/16562817">
+                            <Image src={pixiv} alt="Pixiv 作品 URL" class={css({
+                                w: '8',
+                                h: '8'
+                            })} />
+                        </a>
+                </div>
+            </div>
+        </Content>
+    </div>
+</BaseLayout>

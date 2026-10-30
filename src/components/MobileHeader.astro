@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 
 import '../styles/global.css';
 import { css } from '../../styled-system/css';
-import { center } from '../../styled-system/patterns';
+import { center, flex } from '../../styled-system/patterns';
 
 import twitter from '../assets/twitter.svg';
 import pixiv from '../assets/pixiv.png';
@@ -18,10 +18,9 @@ const { hrefs } = Astro.props;
 <header
   id='header'
   aria-expanded='false'
-  class:list={[css({
+  class:list={[flex({
     bg: '#6c3dd5',
     position: 'fixed',
-    display: 'flex',
     justifyContent: 'space-between',
     w: 'full',
     zIndex: 9999,
@@ -32,8 +31,7 @@ const { hrefs } = Astro.props;
     borderBottomColor: '#72b6e3',
     borderBottomStyle: 'solid',
 }), 'group']}>
-  <div class={css({
-    display: 'flex',
+  <div class={flex({
     alignItems: 'center',
     fontSize: "md",
     gap: '4'
@@ -89,8 +87,7 @@ const { hrefs } = Astro.props;
         </a>
       ))
     }
-  <div class:list={[css({
-    display: 'flex',
+  <div class:list={[flex({
     px: '4',
     alignItems: 'center',
     gap: '8'

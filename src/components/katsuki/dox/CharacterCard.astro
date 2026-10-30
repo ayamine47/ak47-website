@@ -1,0 +1,180 @@
+---
+import { css } from '../../../../styled-system/css';
+import { flex, hstack, vstack } from '../../../../styled-system/patterns';
+
+interface Props {
+    id: string;
+    hero_bg_color?: string;
+    hero_name?: string;
+    name: string;
+    name_roman: string;
+    name_ruby: string;
+    birth: string;
+    description: string;
+}
+
+const { id, hero_bg_color, hero_name, name, name_roman, name_ruby, birth, description } = Astro.props;
+---
+
+<button data-open-btn={id} class={flex({
+    position: "relative",
+    cursor: "pointer",
+    direction: "column",
+    justify: "space-evenly",
+    align: "start",
+    w: "48",
+    h: "48",
+    border: "1",
+    borderColor: "#00C0FB",
+    borderStyle: "solid",
+    bg: "#1F2636",
+    _hover: {
+        bg: "gray.700"
+    }
+})}>
+    <div class={css({
+        w: "full",
+        h: "32",
+    })}>
+    </div>
+    <div class={css({
+        w: "full",
+        h: "16",
+        px: "2",
+        py: "4",
+    })}>
+        <p class={css({ fontSize: "xl", textAlign: "start" })}>{name}</p>
+    </div>
+    {(hero_bg_color && hero_name) &&
+        <p class={css({
+            position: "absolute",
+            bottom: "3.25rem",
+            bg: hero_bg_color,
+            px: "2"
+        })}>
+            {hero_name}
+        </p>
+    }
+</button>
+
+<dialog data-popup={id} class={css({
+    bg: "transparent",
+    w: "full",
+    h: "full",
+    maxW: "none",
+    maxH: "none"
+})}>
+    <div class={flex({
+        justify: "center",
+        align: "center",
+        bg: "black/50",
+        color: "white",
+        w: "full",
+        h: "full"
+    })}>
+        <div class={flex({
+            direction: { base: "column", md: "row" },
+            align: "center",
+            position: "relative",
+            bg: "#1F2636",
+            w: { base: "full", md: "50%" },
+            p: "8",
+            gap: "4",
+            overflow: "clip",
+            border: "4",
+            borderColor: "#00C0FB",
+            borderStyle: "solid"
+        })}>
+            <div class={css({
+                bg: "white",
+                w: "36",
+                h: "48"
+            })}>
+            </div>
+            <div class={vstack({
+                alignItems: "start",
+                px: "4"
+            })}>
+                <div>
+                    <p class={css({
+                        fontSize: "xs"
+                    })}>
+                        {name_ruby}
+                    </p>
+                    <p class={css({
+                        fontSize: "2xl",
+                    })}>
+                        {
+                            hero_name ? name + "／" + hero_name
+                            : name
+                        }
+                    </p>
+                </div>
+                <p>
+                    {
+                        birth.endsWith("）") ? "誕生日：" + birth
+                        : "年齢：" + birth
+                    }
+                </p>
+                <p class={css({ whiteSpace: "pre-line" })} set:html={description}>
+            </div>
+            <button
+                data-close-btn={id}
+                class={css({
+                    position: "absolute",
+                    top: "4",
+                    right: "4",
+                    px: "4",
+                    py: "2",
+                    cursor: "pointer",
+                    bg: "#00C0FB",
+                    _hover: {
+                        bg: "cyan.400"
+                    }
+                })}>
+                閉じる
+            </button>
+            <p class={css({
+                position: "absolute",
+                left: "0",
+                top: { base: "-5", md: "-8" },
+                fontSize: { base: "2xl", md: "4xl" }
+            })}>
+                {name_roman}
+            </p>
+            <p class={css({
+                position: "absolute",
+                right: "0",
+                bottom: { base: "-4", md: "-6" },
+                fontSize: { base: "2xl", md: "4xl" }
+            })}>
+                {name_roman}
+            </p>
+        </div>
+    </div>
+</dialog>
+
+<script>
+    const openButtons = document.querySelectorAll('[data-open-btn]');
+
+    openButtons.forEach((openBtn) => {
+        openBtn.addEventListener('click', () => {
+            const id = (openBtn as HTMLElement).dataset.openBtn;
+            
+            const popup = document.querySelector(`dialog[data-popup="${id}"]`) as HTMLDialogElement;
+            const closeBtn = document.querySelector(`[data-close-btn="${id}"]`);
+
+            if (popup) {
+                popup.showModal();
+
+                const handleClose = () => {
+                    popup.close();
+                    closeBtn?.removeEventListener('click', handleClose);
+                };
+
+                closeBtn?.removeEventListener('click', handleClose);
+                closeBtn?.addEventListener('click', handleClose, { once: true });
+            }
+        });
+    });
+</script>

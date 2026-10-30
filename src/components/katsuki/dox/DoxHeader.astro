@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+
+import '../../../styles/global.css';
+import { css } from '../../../../styled-system/css';
+import { flex } from '../../../../styled-system/patterns';
+
+import kakuyomu from '../../../assets/katsuki/kakuyomu.png';
+import pixiv from '../../../assets/pixiv.png';
+---
+
+<header class={flex({
+  position: "fixed",
+  bg: '#00c0fb',
+  justifyContent: 'space-between',
+  width: 'full',
+  zIndex: 9999,
+  py: '4',
+  m: '0',
+  color: 'white',
+  borderBottom: '4',
+  borderBottomColor: '#FFFF4D',
+  borderBottomStyle: 'solid',
+})}>
+  <a href="/katsuki/dox" class={css({
+    ml: '4',
+    fontSize: "2xl",
+    fontWeight: "bold",
+    textShadow: "0 4px 8px #1F2636"
+  })}>
+    ドクス―不連続存在―
+  </a>
+  <div class={css({
+    display: 'flex',
+    px: '4',
+    alignItems: 'center',
+    gap: '4'
+  })}>
+    <a href="https://kakuyomu.jp/works/11054822662395211428">
+      <Image src={kakuyomu} alt="カクヨム作品 URL" class={css({
+        w: '4',
+        h: '4'
+      })} />
+    </a>
+    <a href="https://www.pixiv.net/novel/series/16562817">
+      <Image src={pixiv} alt="Pixiv 作品 URL" class={css({
+        w: '4',
+        h: '4'
+      })} />
+    </a>
+  </div>
+</header>
