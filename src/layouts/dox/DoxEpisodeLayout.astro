@@ -1,7 +1,14 @@
 ---
+import { Image } from "astro:assets";
+import { ChevronLeft, ChevronRight } from "@lucide/astro";
+
 import { css } from "../../../styled-system/css";
-import { flex, grid, gridItem, vstack } from "../../../styled-system/patterns";
+import { flex, grid, gridItem, hstack, vstack } from "../../../styled-system/patterns";
+
 import DoxLayout from "./DoxLayout.astro";
+
+import kakuyomu from '../../assets/katsuki/kakuyomu.png';
+import pixiv from '../../assets/pixiv.png';
 
 interface Props {
   prev_ep?: string;
@@ -22,7 +29,7 @@ interface Props {
 const { prev_ep, next_ep, ep_num, date, writer, kakuyomu_link, pixiv_link, description , guest_name, guest_ruby, guest_description, pov, reflection } = Astro.props;
 ---
 <DoxLayout pageTitle={ep_num}>
-    <div class={vstack({ mt: "8" })}>
+    <div class={vstack()}>
         <div class={grid({
             columns: 2,
             mb: "8",
@@ -31,8 +38,9 @@ const { prev_ep, next_ep, ep_num, date, writer, kakuyomu_link, pixiv_link, descr
             {
                 next_ep ?
                     <a href={`/katsuki/dox/ep/${next_ep}`}
-                    class={css({
+                    class={hstack({
                         p: "2",
+                        gap: "2",
                         border: "1",
                         borderColor: "white",
                         borderStyle: "solid",
@@ -42,15 +50,17 @@ const { prev_ep, next_ep, ep_num, date, writer, kakuyomu_link, pixiv_link, descr
                             borderColor: "#00C0FB",
                         }
                     })}>
-                        ＜　次の話
+                        <ChevronLeft size={16} />
+                        次の話
                     </a>
                 : <div class={gridItem({ p: "2" })} />
             }
             {
                 prev_ep ?
                     <a href={`/katsuki/dox/ep/${prev_ep}`}
-                    class={css({
+                    class={hstack({
                         p: "2",
+                        gap: "2",
                         border: "1",
                         borderColor: "white",
                         borderStyle: "solid",
@@ -60,7 +70,8 @@ const { prev_ep, next_ep, ep_num, date, writer, kakuyomu_link, pixiv_link, descr
                             borderColor: "#00C0FB",
                         }
                     })}>
-                        前の話　＞
+                        前の話
+                        <ChevronRight size={16} />
                     </a>
                 : <div class={gridItem({ p: "2" })} />
             }
@@ -73,45 +84,27 @@ const { prev_ep, next_ep, ep_num, date, writer, kakuyomu_link, pixiv_link, descr
             <div class={grid({
                 columns: 2,
                 mb: "16",
-                gap: "8"
+                gap: "16"
             })}>
-                <a href={`https://kakuyomu.jp/works/11054822662395211428/episodes/${kakuyomu_link}`}
-                class={css({
-                    p: "2",
-                    border: "1",
-                    borderColor: "white",
-                    borderStyle: "solid",
-                    fontSize: "xl",
-                    textAlign: "center",
-                    _hover: {
-                        color: "#00C0FB",
-                        borderColor: "#00C0FB",
-                    }
-                })}>
-                    カクヨム
+                <a href={`https://kakuyomu.jp/works/11054822662395211428/episodes/${kakuyomu_link}`}>
+                    <Image src={kakuyomu} alt="カクヨム作品 URL" class={css({
+                        w: '8',
+                        h: '8'
+                    })} />
                 </a>
-
-                <a href={`https://www.pixiv.net/novel/show.php?id=${pixiv_link}`}
-                class={css({
-                    p: "2",
-                    border: "1",
-                    borderColor: "white",
-                    borderStyle: "solid",
-                    fontSize: "xl",
-                    textAlign: "center",
-                    _hover: {
-                        color: "#00C0FB",
-                        borderColor: "#00C0FB",
-                    }
-                })}>
-                    Pixiv
+                <a href={`https://www.pixiv.net/novel/show.php?id=${pixiv_link}`}>
+                    <Image src={pixiv} alt="Pixiv 作品 URL" class={css({
+                        w: '8',
+                        h: '8'
+                    })} />
                 </a>
             </div>
         }
         <div
             class={css({
                 w: { base: "full", md: "50%" },
-                mb: "32"
+                mb: "32",
+                px: "4"
         })}>
             <p set:html={description} />
         </div>
@@ -122,10 +115,10 @@ const { prev_ep, next_ep, ep_num, date, writer, kakuyomu_link, pixiv_link, descr
                     w: { base: "full", md: "50%" },
                     mb: "32"
             })}>
-                <div class={flex({ justify: "center" })}>
+                <div class={flex({ justify: "center", py: "4", bg: "#00C0FB", borderY: "4", borderYColor: "#FFFF4D", borderStyle: "solid" })}>
                     <h2 class={css({ fontSize: "3xl", fontWeight: "bold" })}>ゲスト</h2>
                 </div>
-                <div class={css({ mt: "16" })}>
+                <div class={css({ mt: "16", px: "4" })}>
                     <div class={css({ mb: "4" })}>
                         <p class={css({ fontSize: "xs" })}>{guest_ruby}</p>
                         <p class={css({ fontSize: "2xl" })}>{guest_name}</p>
@@ -139,10 +132,10 @@ const { prev_ep, next_ep, ep_num, date, writer, kakuyomu_link, pixiv_link, descr
                 w: { base: "full", md: "50%" },
                 mb: "32"
         })}>
-            <div class={flex({ justify: "center" })}>
+            <div class={flex({ justify: "center", py: "4", bg: "#00C0FB", borderY: "4", borderYColor: "#FFFF4D", borderStyle: "solid" })}>
                 <h2 class={css({ fontSize: "3xl", fontWeight: "bold" })}>次回のみどころ</h2>
             </div>
-            <div class={css({ mt: "16" })}>
+            <div class={css({ mt: "16", px: "4" })}>
                 <p set:html={pov} />
             </div>
         </div>

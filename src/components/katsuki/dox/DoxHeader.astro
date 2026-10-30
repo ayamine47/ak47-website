@@ -3,81 +3,49 @@ import { Image } from 'astro:assets';
 
 import '../../../styles/global.css';
 import { css } from '../../../../styled-system/css';
+import { flex } from '../../../../styled-system/patterns';
 
-import twitter from '../../../assets/twitter.svg';
+import kakuyomu from '../../../assets/katsuki/kakuyomu.png';
 import pixiv from '../../../assets/pixiv.png';
-import github from '../../../assets/github.png';
-
-interface Props {
-    hrefs: { name: string; target: string }[];
-}
-const { hrefs } = Astro.props;
 ---
 
-<header class={css({
-  bg: '#6c3dd5',
-  display: 'flex',
+<header class={flex({
+  position: "fixed",
+  bg: '#00c0fb',
   justifyContent: 'space-between',
   width: 'full',
   zIndex: 9999,
-  py: '2',
+  py: '4',
   m: '0',
-  color: '#72b6e3',
+  color: 'white',
   borderBottom: '4',
-  borderBottomColor: '#72b6e3',
+  borderBottomColor: '#FFFF4D',
   borderBottomStyle: 'solid',
-  fontFamily: 'oranienbaum'
 })}>
-  <div class={css({
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: "md",
-    gap: '4'
+  <a href="/katsuki/dox" class={css({
+    ml: '4',
+    fontSize: "2xl",
+    fontWeight: "bold",
+    textShadow: "0 4px 8px #1F2636"
   })}>
-    <a href="/" class={css({
-      fontSize: "4xl",
-      ml: '4'
-    })}>
-      AK47
-    </a>
-    {
-      hrefs.map(({ name, target }) => (
-        <a href={target} class={css({ fontSize: 'xl' })}>{name}</a>
-      ))
-    }
-  </div>
-
+    ドクス―不連続存在―
+  </a>
   <div class={css({
     display: 'flex',
     px: '4',
     alignItems: 'center',
     gap: '4'
   })}>
-    <a href="https://twitter.com/ak47_work">
-      <Image src={twitter} alt="Twitter" class={css({
+    <a href="https://kakuyomu.jp/works/11054822662395211428">
+      <Image src={kakuyomu} alt="カクヨム作品 URL" class={css({
         w: '4',
-        h: '4',
-        _hover: {
-          opacity: '60'
-        }
+        h: '4'
       })} />
     </a>
-    <a href="https://www.pixiv.net/users/105353694">
-      <Image src={pixiv} alt="Pixiv" class={css({
+    <a href="https://www.pixiv.net/novel/series/16562817">
+      <Image src={pixiv} alt="Pixiv 作品 URL" class={css({
         w: '4',
-        h: '4',
-        _hover: {
-          opacity: '60'
-        }
-      })} />
-    </a>
-    <a href="https://github.com/ayamine47">
-      <Image src={github} alt="Twitter" class={css({
-        w: '4',
-        h: '4',
-        _hover: {
-          opacity: '60'
-        }
+        h: '4'
       })} />
     </a>
   </div>

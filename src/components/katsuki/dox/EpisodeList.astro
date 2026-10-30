@@ -21,9 +21,12 @@ const { first, date, ep_num } = Astro.props;
         border: '4',
         borderColor: '#00C0FB',
         borderStyle: 'solid',
+        bg: "#1F2636",
+        _hover: {
+            bg: "gray.700"
+        }
     })}>
         <div class={css({
-            bg: 'white',
             h: (first) ? 64 : 24
         })}>
         </div>

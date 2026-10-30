@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@lucide/astro':
+        specifier: ^1.65.0
+        version: 1.65.0(astro@6.1.2(lightningcss@1.31.1)(rollup@4.60.1)(typescript@5.9.3))
       astro:
         specifier: ^6.1.2
         version: 6.1.2(lightningcss@1.31.1)(rollup@4.60.1)(typescript@5.9.3)
@@ -565,6 +568,11 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
+
+  '@lucide/astro@1.65.0':
+    resolution: {integrity: sha512-usIPvsiPHtccGt0bSod9xE+ZmbWUyNqtGF+2O32jKuVr4/e+lmfJrGRNHaf3Zud2pVNHx9hzz8r8o0HVy2RNTg==}
+    peerDependencies:
+      astro: ^4 || ^5 || ^6 || ^7
 
   '@modelcontextprotocol/sdk@1.29.0':
     resolution: {integrity: sha512-zo37mZA9hJWpULgkRpowewez1y6ML5GsXJPY8FI0tBBCd77HEvza4jDqRKOXgHNn867PVGCyTdzqpz0izu5ZjQ==}
@@ -2824,6 +2832,10 @@ snapshots:
     optional: true
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
+
+  '@lucide/astro@1.65.0(astro@6.1.2(lightningcss@1.31.1)(rollup@4.60.1)(typescript@5.9.3))':
+    dependencies:
+      astro: 6.1.2(lightningcss@1.31.1)(rollup@4.60.1)(typescript@5.9.3)
 
   '@modelcontextprotocol/sdk@1.29.0(zod@4.3.6)':
     dependencies:

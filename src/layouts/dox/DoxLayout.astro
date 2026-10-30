@@ -15,9 +15,6 @@ const { pageTitle } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL('/assets/ak47_og.png', Astro.url);
-
-const hrefs = [
-]
 ---
 
 <html lang="ja">
@@ -28,12 +25,12 @@ const hrefs = [
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 		<meta name="description" content="AK47 のホームページ" />
-		<meta name="keyword" content="" />
+		<meta name="keyword" content="ドクス 不連続存在 Dox 小説 特撮 ヒーロー ダークヒーロー アクション サスペンス ミステリー SF ファンタジー ダークファンタジー 松涛一汐 'Kazushi Matsunami' 朝川七桜 'Nanao Asakawa' 酉島千鳥 'Chidori Torishima' 佐竹茜 'Akane Satake' 九十九美梅 'Miume Tsukumo' 八雲零南 'Reina Yakumo' 五条歩霧 'Ayumu Gojo' 長谷川叶湖 'Kanako Hasegawa'" />
 		<meta name="theme-color" content="rgb(0, 192, 251)" />
 		<meta property="og:locale" content="ja_JP" />
 		<meta property="og:site_name" content="AK47's HomePage" />
-		<meta property="og:title" content="AK47's HomePage" />
-		<meta property="og:description" content="AK47 のホームページ" />
+		<meta property="og:title" content={pageTitle + " | ドクス―不連続存在― | AK47's HomePage"} />
+		<meta property="og:description" content="毎週日曜あさ 10:00 に連載中の紅坂篤樹の Web 小説『ドクス―不連続存在―』の特設ページ" />
 		<meta
 		  property="og:image"
 		  content={socialImageURL}
@@ -54,14 +51,16 @@ const hrefs = [
     <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap" rel="stylesheet">
   </head>
   <body class={css({
-    bg: 'black',
+    bg: '#1F2636',
     color: 'white',
     fontFamily: 'mincho',
     fontSize: { base: "sm", md: "md" },
     position: 'relative'
   })}>
-    <DoxHeader hrefs={hrefs} />
-    <slot />
+    <DoxHeader />
+    <div class={css({ pt: "32" })}>
+      <slot />
+    </div>
     <Footer />
   </body>
 </html>

@@ -27,9 +27,12 @@ const { id, hero_bg_color, hero_name, name, name_roman, name_ruby, birth, descri
     border: "1",
     borderColor: "#00C0FB",
     borderStyle: "solid",
+    bg: "#1F2636",
+    _hover: {
+        bg: "gray.700"
+    }
 })}>
     <div class={css({
-        bg: "white",
         w: "full",
         h: "32",
     })}>
@@ -38,7 +41,7 @@ const { id, hero_bg_color, hero_name, name, name_roman, name_ruby, birth, descri
         w: "full",
         h: "16",
         px: "2",
-        py: "4"
+        py: "4",
     })}>
         <p class={css({ fontSize: "xl", textAlign: "start" })}>{name}</p>
     </div>
@@ -69,13 +72,14 @@ const { id, hero_bg_color, hero_name, name, name_roman, name_ruby, birth, descri
         w: "full",
         h: "full"
     })}>
-        <div class={hstack({
+        <div class={flex({
+            direction: { base: "column", md: "row" },
+            align: "center",
             position: "relative",
-            bg: "zinc.900",
+            bg: "#1F2636",
             w: { base: "full", md: "50%" },
-            minW: { base: "360px", md: "720px" },
-            h: "80",
             p: "8",
+            gap: "4",
             overflow: "clip",
             border: "4",
             borderColor: "#00C0FB",
@@ -83,27 +87,29 @@ const { id, hero_bg_color, hero_name, name, name_roman, name_ruby, birth, descri
         })}>
             <div class={css({
                 bg: "white",
-                w: { base: "24", md: "36" },
-                h: { base: "32", md: "48" }
+                w: "36",
+                h: "48"
             })}>
             </div>
             <div class={vstack({
                 alignItems: "start",
                 px: "4"
             })}>
-                <p class={css({
-                    fontSize: "xs"
-                })}>
-                    {name_ruby}
-                </p>
-                <p class={css({
-                    fontSize: "2xl",
-                })}>
-                    {
-                        hero_name ? name + "／" + hero_name
-                        : name
-                    }
-                </p>
+                <div>
+                    <p class={css({
+                        fontSize: "xs"
+                    })}>
+                        {name_ruby}
+                    </p>
+                    <p class={css({
+                        fontSize: "2xl",
+                    })}>
+                        {
+                            hero_name ? name + "／" + hero_name
+                            : name
+                        }
+                    </p>
+                </div>
                 <p>
                     {
                         birth.endsWith("）") ? "誕生日：" + birth
@@ -112,7 +118,7 @@ const { id, hero_bg_color, hero_name, name, name_roman, name_ruby, birth, descri
                 </p>
                 <p class={css({ whiteSpace: "pre-line" })} set:html={description}>
             </div>
-            <button 
+            <button
                 data-close-btn={id}
                 class={css({
                     position: "absolute",
@@ -120,24 +126,27 @@ const { id, hero_bg_color, hero_name, name, name_roman, name_ruby, birth, descri
                     right: "4",
                     px: "4",
                     py: "2",
+                    cursor: "pointer",
                     bg: "#00C0FB",
-                    cursor: "pointer" })}
-            >
+                    _hover: {
+                        bg: "cyan.400"
+                    }
+                })}>
                 閉じる
             </button>
             <p class={css({
                 position: "absolute",
                 left: "0",
-                top: "-8",
-                fontSize: "4xl"
+                top: { base: "-5", md: "-8" },
+                fontSize: { base: "2xl", md: "4xl" }
             })}>
                 {name_roman}
             </p>
             <p class={css({
                 position: "absolute",
                 right: "0",
-                bottom: "-6",
-                fontSize: "4xl"
+                bottom: { base: "-4", md: "-6" },
+                fontSize: { base: "2xl", md: "4xl" }
             })}>
                 {name_roman}
             </p>

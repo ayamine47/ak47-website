@@ -1,22 +1,26 @@
 ---
+import { Image } from 'astro:assets';
+
 import '../../../styles/global.css';
 
 import { css } from '../../../../styled-system/css';
 import { center, flex, grid, vstack } from '../../../../styled-system/patterns';
-
 
 import DoxContent from '../../../components/katsuki/dox/DoxContent.astro';
 import CharacterCard from '../../../components/katsuki/dox/CharacterCard.astro';
 import EpisodeList from '../../../components/katsuki/dox/EpisodeList.astro';
 
 import DoxLayout from '../../../layouts/dox/DoxLayout.astro';
+
+import kakuyomu from '../../../assets/katsuki/kakuyomu.png';
+import pixiv from '../../../assets/pixiv.png';
 ---
 
 <DoxLayout pageTitle='Top'>
     <div class={vstack({
         w: 'full'
     })}>
-        <DoxContent text_ja="各話一覧" text_en="EPISODE LIST">
+        <DoxContent text_ja="各話一覧" text_en="EPISODE LIST" border={true}>
             <div class={flex({ w: "full", justify: "center", mt: "8" })}>
                 <div class={grid({
                     columns: { base: 2, md: 4 },
@@ -50,17 +54,17 @@ import DoxLayout from '../../../layouts/dox/DoxLayout.astro';
             </div>
         </Content>
 
-        <DoxContent text_ja="作品概要" text_en="INTRODUCTION">
-            <div class={vstack({ columnGap: '16', fontSize: 'xl', textAlign: "center", mt: "8", px: "4", gap: "4" })}>
-                <p>ジャーナリスト・<b>朝川七桜</b>の許に、科学技術研究企業・ネーベル社が開発した、<br>対未確認超人類生命体強化装備・“ <b class={css({ color: "#00C0FB" })}>ドクス</b>ギア ” が届いた。</p>
-                <p>曰く、<b class={css({ color: "#00C0FB" })}>ドクス</b>に「変身」して、怪人を倒せというのである。</p>
-                <p><b class={css({ color: "#00C0FB" })}>ドクス</b>ギアに対して、最初は半信半疑だった<b>七桜</b>であったが、<br>松本で運悪くその怪人と出くわしてしまう。</p>
-                <p>そう、彼女は、世間を騒がせる不可解な連続殺人事件の真相と、<br>失踪した同業者にして親友・<b>九十九美梅</b>の行方を追って、<br>長野県は松本へ出向いていたのである。</p>
-                <p>かくして、彼女は一か八か、<b class={css({ color: "#00C0FB" })}>ドクス</b>に「変身」することを試みるが……。</p>
+        <DoxContent text_ja="作品概要" text_en="INTRODUCTION" border={true}>
+            <div class={vstack({ columnGap: '16', fontSize: { base: "md", md: 'xl' }, textAlign: "center", mt: "8", px: "4", gap: "4" })}>
+                <p>ジャーナリスト・<b>朝川七桜</b>の許に、<br class={css({ display: { base: "block", md: "none" } })}>科学技術研究企業・ネーベル社が開発した、<br>対未確認超人類生命体強化装備・“ <b class={css({ color: "#00C0FB" })}>ドクス</b>ギア ” <br class={css({ display: { base: "block", md: "none" } })}>が届いた。</p>
+                <p>曰く、<b class={css({ color: "#00C0FB" })}>ドクス</b>に「変身」して、<br class={css({ display: { base: "block", md: "none" } })}>怪人を倒せというのである。</p>
+                <p><b class={css({ color: "#00C0FB" })}>ドクス</b>ギアに対して、<br class={css({ display: { base: "block", md: "none" } })}>最初は半信半疑だった<b>七桜</b>であったが、<br>松本で運悪くその怪人と出くわしてしまう。</p>
+                <p>そう、彼女は、<br class={css({ display: { base: "block", md: "none" } })}>世間を騒がせる不可解な連続殺人事件の真相と、<br>失踪した同業者にして<br class={css({ display: { base: "block", md: "none" } })}>親友・<b>九十九美梅</b>の行方を追って、<br>長野県は松本へ出向いていたのである。</p>
+                <p>かくして、彼女は一か八か、<br class={css({ display: { base: "block", md: "none" } })}><b class={css({ color: "#00C0FB" })}>ドクス</b>に「変身」することを試みるが……。</p>
             </div>
         </Content>
 
-        <DoxContent text_ja="登場人物" text_en="CHARACTERS">
+        <DoxContent text_ja="登場人物" text_en="CHARACTERS" border={true}>
             <div class={center({ mt: "8", px: "2" })}>
                 <div class={flex({
                     flexWrap: "wrap",
@@ -194,9 +198,19 @@ import DoxLayout from '../../../layouts/dox/DoxLayout.astro';
                 })}>
                     毎週日曜あさ 10:00
                 </p>
-                <div class={flex({ w: "48", justify: "space-between" })}>
-                    <a href="https://kakuyomu.jp/works/11054822662395211428" class={css({ color: "#00C0FB" })}>カクヨム</a>
-                    <a href="https://www.pixiv.net/novel/series/16562817" class={css({ color: "#00C0FB" })}>Pixiv</a>
+                <div class={flex({ w: "48", justify: "space-evenly", pt: "4" })}>
+                        <a href="https://kakuyomu.jp/works/11054822662395211428">
+                            <Image src={kakuyomu} alt="カクヨム作品 URL" class={css({
+                                w: '8',
+                                h: '8'
+                            })} />
+                        </a>
+                        <a href="https://www.pixiv.net/novel/series/16562817">
+                            <Image src={pixiv} alt="Pixiv 作品 URL" class={css({
+                                w: '8',
+                                h: '8'
+                            })} />
+                        </a>
                 </div>
             </div>
         </Content>

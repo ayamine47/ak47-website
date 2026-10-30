@@ -6,9 +6,10 @@ import { vstack } from '../../../../styled-system/patterns';
 interface Props {
     text_ja: string;
     text_en: string;
+    border?: boolean;
 }
 
-const { text_ja, text_en } = Astro.props;
+const { text_ja, text_en, border } = Astro.props;
 ---
 
 <section class={vstack({
@@ -17,9 +18,9 @@ const { text_ja, text_en } = Astro.props;
     w: 'full',
     my: '4',
     pb: '16',
-    borderBottom: "4",
-    borderBottomColor: "#00C0FB",
-    borderBottomStyle: "solid"
+    borderBottom: border && "4",
+    borderBottomColor: border && "#00C0FB",
+    borderBottomStyle: border && "solid"
 })}>
     <p class={css({
         fontSize: "5xl",
