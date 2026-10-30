@@ -8,7 +8,6 @@ import Content from '../../components/Content.astro';
 import Section from '../../components/Section.astro';
 import WorksCard from '../../components/WorksCard.astro';
 
-import yukkuri from '../../assets/blog/yukkuri/ocean.webp';
 import anima from '../../assets/katsuki/anima.webp';
 import dummy from '../../assets/dummy.png';
 import hermeneutics from '../../assets/katsuki/hermeneutics.png';
@@ -16,11 +15,13 @@ import lilja from '../../assets/katsuki/lilja.jpg';
 import jasmine from '../../assets/katsuki/jasmine.jpg';
 import semantics from '../../assets/katsuki/semantics.png';
 import sumika_date from '../../assets/katsuki/sumika_date.jpg';
+import tsubame from '../../assets/katsuki/tsubame_og.png';
+import yukkuri from '../../assets/blog/yukkuri/ocean.webp';
 
 interface WorkMetaData {
   title: string;
   href: string;
-  image: ImageMetadata;
+  image?: ImageMetadata;
   date: string;
   tags: string[];
   description: string;
@@ -43,7 +44,6 @@ const works: WorkMetaData[] = [
   {
     title: '批評：きりのはのべる『なついろにっき。』',
     href: '/blog/review-natsuiro',
-    image: dummy,
     date: '26.09.02',
     tags: [
       '説明的文章',
@@ -192,8 +192,8 @@ const works: WorkMetaData[] = [
         <WorksCard
           title="特集：雨夜燕"
           href="/katsuki/tsubame"
-          image={dummy}
-          alt_text=""
+          image={tsubame}
+          alt_text="雨夜燕の二次創作まとめページ"
           date=""
           tags={[ "二次創作", "学マス", "雨夜燕" ]}
           description="雨夜燕や彼女の P を中心とする作品一覧。"

@@ -1,0 +1,32 @@
+---
+import { xid } from 'astro:schema';
+import { css } from '../../styled-system/css';
+
+interface Props {
+    href: string;
+    px: string;
+    py: string;
+    font_size: string;
+    font_family: string;
+    text: string;
+}
+
+const { href, px, py, font_size, font_family, text } = Astro.props;
+---
+
+<a href={href} class={css({
+    bg: "#6c3dd5",
+    color: "#72b6e3",
+    px: px,
+    py: py,
+    border: "2",
+    borderColor: "#8560fe",
+    borderStyle: "solid",
+    fontSize: font_size,
+    fontFamily: font_family,
+    _hover: {
+        bg: "#8560fe"
+    }
+})}>
+    {text}
+</a>

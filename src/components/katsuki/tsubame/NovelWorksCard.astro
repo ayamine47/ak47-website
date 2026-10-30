@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { css } from '../../../../styled-system/css';
-import { flex } from '../../../../styled-system/patterns';
+import { flex, grid, hstack } from '../../../../styled-system/patterns';
 
 interface Props {
     id: string;
@@ -12,7 +12,7 @@ interface Props {
     description: string;
     date: string;
     series?: string;
-    tags: string[];
+    tags?: string[];
 }
 
 const { id, href, image, alt_text, title, description, date, series, tags } = Astro.props;
@@ -60,6 +60,9 @@ const { id, href, image, alt_text, title, description, date, series, tags } = As
         align: "center",
         color: "#72b6e3",
         fontSize: "xl",
+        _hover: {
+            bg: "#8560fe"
+        }
     })}>
         読む
     </a>
@@ -116,32 +119,56 @@ const { id, href, image, alt_text, title, description, date, series, tags } = As
                 <p class={css({ color: "zinc.400", fontFamily: 'oranienbaum' })} >{date}</p>
                 <p class={css({ fontSize: "xl" })}>{title}</p>
                 <p set:html={description} />
-                <div class={flex({ align: "center", gap: "4" })}>
+                <div class={flex({
+                    direction: { base: "column", md: "row" },
+                    justify: { base: "center", md: "start" },
+                    align: "center",
+                    w: "full",
+                    gap: "4"
+                })}>
                     <a href={href} class={css({
                         bg: "#6c3dd5",
-                        px: "4",
                         py: "2",
+                        w: "24",
                         color: "#72b6e3",
+                        border: "2",
+                        borderColor: "#8560fe",
+                        borderStyle: "solid",
                         fontSize: "xl",
+                        textAlign: "center",
+                        _hover: {
+                            bg: "#8560fe"
+                        }
                     })}>
                         読む
                     </a>
                     {
-                        tags.map((tag) => (
-                        <p class={css({
-                            p: "2",
-                            border: '1',
-                            borderStyle: 'solid',
-                            borderColor: '#72b6e3',
-                            fontSize: "sm",
+                        tags &&
+                        <div class={grid({
+                            columns: { base: 3, md: undefined },
+                            gap: "2",
+                            w: "full"
                         })}>
-                            #{tag}
-                        </p>
-                        ))
+                            {
+                                tags.map((tag) => (
+                                <p class={css({
+                                    w: "full",
+                                    py: "2",
+                                    border: '1',
+                                    borderStyle: 'solid',
+                                    borderColor: '#72b6e3',
+                                    fontSize: "sm",
+                                    textAlign: "center"
+                                })}>
+                                    #{tag}
+                                </p>
+                                ))
+                            }
+                        </div>
                     }
                 </div>
             </div>
-            <button 
+            <button
                 data-close-btn={id}
                 class={css({
                     position: "absolute",

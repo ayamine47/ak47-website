@@ -8,6 +8,7 @@ import { flex, vstack } from '../../styled-system/patterns';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 import ak47_icon from '../assets/ak47_icon.png';
+import LinkButton from '../components/LinkButton.astro';
 ---
 
 <BaseLayout pageTitle="Top">
@@ -35,16 +36,14 @@ import ak47_icon from '../assets/ak47_icon.png';
       <p class={css({ fontSize: { base: "2xl", md: "4xl" }, fontFamily: 'oranienbaum' })}>
         Le Penseur<br><span class={css({ display: {base: 'block', md: 'none' } })}>/</span>Contents Developer
       </p>
-      <a href='/profile' class={css({
-        bg: '#6c3dd5',
-        px: '8',
-        py: '4',
-        color: '#72b6e3',
-        fontSize: 'xl',
-        fontFamily: 'oranienbaum'
-      })}>
-        MORE
-      </a>
+      <LinkButton
+        href='/profile'
+        px='8'
+        py='2'
+        font_size='xl'
+        font_family='oranienbaum'
+        text='MORE'
+      />
     </div>
   </div>
 </BaseLayout>

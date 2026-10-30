@@ -10,12 +10,11 @@ import WorksCard from '../components/WorksCard.astro';
 
 import cry_and_night from '../assets/kazusa/cry_and_night.png';
 import dawn_and_fly from '../assets/kazusa/dawn_and_fly.webp';
-import dummy from '../assets/dummy.png';
 
 interface WorkMetaData {
   title: string;
   href: string;
-  image: ImageMetadata;
+  image?: ImageMetadata;
   date: string;
   tags: string[];
   description: string;
@@ -63,7 +62,6 @@ const works: WorkMetaData[] = [
   {
     title: '月と毒',
     href: 'https://soundcloud.com/orf6qsrzckuu/qtslgt55udgl',
-    image: dummy,
     date: '26.04.25',
     tags: [
       'ゴシックメタル',

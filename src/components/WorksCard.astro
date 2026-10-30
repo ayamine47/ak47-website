@@ -20,44 +20,51 @@ const { title, href, image, alt_text, date, tags, description } = Astro.props;
 
 <div class={css({ m: '4' })}>
   <a href={href}>
-    <div class={flex({
+    <div class={css({
+      bg: "black",
       w: 'full',
-      minH: '180',
-      maxH: '240',
-      p: '1',
-      columnGap: { base: '2', md: '8' },
       border: '1',
       borderColor: '#72b6e3',
-      borderStyle: 'solid'
+      borderStyle: 'solid',
+      _hover: {
+        bg: "zinc.900"
+      }
     })}>
-    {
-      image ?
-        <Image
-          src={image}
-          alt={alt_text}
-          class={css({
-            width: { base: '20', md: '120' },
-            objectFit: 'contain'
-          })}
-        />
-      : <div class={css({ px: '4' })}></div>
-    }
-      <div class={vstack({
-        alignItems: 'start',
-        justify: 'center',
-        rowGap: '1'
+      <div class={flex({
+        direction: { base: "column", md: "row" },
+        align: "center",
+        p: '4',
+        gap: '4',
       })}>
-        <p class={css({fontSize: 'sm', fontFamily: 'oranienbaum', color: 'zinc.400' })}>{date}</p>
-        <p class={css({fontSize: "xl" })}>{title}</p>
-        <p class={css({
-          fontSize: "sm",
-          whiteSpace: 'pre-line'
+        {
+          image &&
+          <div class={css({ w: '24' })}>
+            <Image
+              src={image}
+              alt={alt_text}
+            />
+          </div>
+        }
+        <div class={vstack({
+          alignItems: 'start',
+          justify: 'center',
+          rowGap: '1'
         })}>
-          {description}
-        </p>
-        <div class={hstack({ gap: '2', my: '2' })}>
+          <p class={css({fontSize: { base: 'sm', md: 'md' }, fontFamily: 'oranienbaum', color: 'zinc.400' })}>{date}</p>
+          <p class={css({fontSize: "xl" })}>{title}</p>
+          <p class={css({
+            fontSize: "sm",
+            whiteSpace: 'pre-line'
+          })}>
+            {description}
+          </p>
+        </div>
+      </div>
+      {
+        tags &&
+        <div class={hstack({ gap: '2', my: '4', px: '4' })}>
           {
-            tags && tags.map((tag) => (
+            tags.map((tag) => (
               <button class={css({
                 p: '1',
                 border: '1',
@@ -70,7 +77,7 @@ const { title, href, image, alt_text, date, tags, description } = Astro.props;
             ))
           }
         </div>
-      </div>
+      }
     </div>
   </a>
 </div>
