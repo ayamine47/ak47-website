@@ -24,15 +24,22 @@ import pixiv from '../../../assets/pixiv.png';
             <div class={flex({ w: "full", justify: "center", mt: "8" })}>
                 <div class={grid({
                     columns: { base: 2, md: 4 },
-                    gridRow: 2,
                     w: { base: 'full', md: '48rem' },
                     px: { base: "4", md: "0" },
                     gap: '4'
                 })}>
                     <EpisodeList
+                        date='2026 年 11 月 15 日'
+                        ep_num='7'
+                        first={true}
+                    />
+                    <EpisodeList
+                        date='2026 年 11 月 08 日'
+                        ep_num='6'
+                    />
+                    <EpisodeList
                         date='2026 年 11 月 01 日'
                         ep_num='5'
-                        first={true}
                     />
                     <EpisodeList
                         date='2026 年 10 月 25 日'
